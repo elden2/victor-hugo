@@ -2,5 +2,4 @@
 title = "Home"
 +++
 
-An outline of my learning about data science.
-
+I'm a high school math and physics teacher.  Learning some data science for fun.
