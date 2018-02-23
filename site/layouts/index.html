@@ -1,9 +1,48 @@
-{{ partial "header" . }}
+{{ partial "header.html" . }}
+<div class="main column">
+    <div class="container">
+        <div class="content">
+            {{ range where .Data.Pages "Title" "Home" }}
+                <div class="markdown">
+                {{ .Content }}
+                </div>
+            {{ end }}
 
-<h1>Hugo with Gulp, PostCSS and Webpack</h1>
+            {{ if isset .Site.Params "latestpostcount" }}
+                <div class="posts">
+                {{ $nbPosts := len (where .Data.Pages "Section" "blog") }}
+                {{ if gt $nbPosts 0 }}
+                    <div class="page-heading">Latest posts</div>
+                    <ul>
+                    {{ range (first .Site.Params.latestpostcount (where .Pages "Section" "blog")).GroupByDate "Jan, 2006" "desc" }}
+                        <li class="groupby">{{ .Key }}</li>
+                        {{ range sort .Pages "Date" "desc" }}
+                            {{ partial "li.html" . }}
+                        {{ end }}
+                    {{ end }}
+                    </ul>
 
-<p>
-  Hooray 🎉 - you've built this with <a href="https://github.com/netlify/victor-hugo">Victor-Hugo</a>!
-</p>
+                    {{ if gt $nbPosts .Site.Params.latestpostcount }}
+                        <a href="./blog/" class="see-more">See more ...</a>
+                    {{ end }}
+                {{ end }}
+                </div>
+            {{ end }}
 
-{{ partial "footer" . }}
+            <div class="best-posts">
+            {{ $nbPosts := len (where .Data.Pages "Params.best" true) }}
+            {{ if gt $nbPosts 0 }}
+                <div class="page-heading">Best posts</div>
+                <ul>
+                {{ range sort .Data.Pages "Date" "desc" }}
+                    {{ if eq .Params.best true }}
+                        {{ partial "li.html" . }}
+                    {{ end }}
+                {{ end }}
+                </ul>
+            {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ partial "footer.html" . }}
