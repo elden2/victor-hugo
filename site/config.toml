@@ -7,7 +7,7 @@ languageCode = "en-US"
 layoutdir = "layouts"
 publishdir = "public"
 author = "Zachary Swarth"
-title = "Leanring Data Science from The Ground Up"
+title = "Learning Data Science from The Ground Up"
 disqusshortname = ""
 pluralizelisttitles = false
 
@@ -26,7 +26,7 @@ highlightjs = true
 progressively = true
 share = true
 latestpostcount = 10
-github = "elden2"
+github = "zswarth"
 email = "zachary.swarth@gmail.com"
 linkedin = "zachary-swarth-4bb15033/"
 #twitter = "example"

@@ -4,5 +4,6 @@ title = "Home"
 
 Welcome to computer science from a novice.
 
-I'm a math and physics teacher, but learning a bit of data science for fun.  Follow my progress as I play around and learn a bit about algorithms, cleaning data, programming, and general problem solving.  All comments, suggestions, hints, and general thoughts are encourgaged.
+My name is Zach, and I'm a math and physics teacher out in California.  I've been learning a bit of data science and computer science for fun lately.  Follow my progress as I play around and learn a bit about algorithms, cleaning data, general programming, machine learning, and whatever else I find myself stumbling into.
 
+There's no specific path or order to my projects.  They range from Kaggle competitions, to building ML libraries from scratch (not for efficient use, but just to make sure I understand the algorithms well), <http://www.projecteuler.net> problems, and a bit of random things.  Really just a random assortment.  All comments, suggestions, hints, and general thoughts are encourgaged.
