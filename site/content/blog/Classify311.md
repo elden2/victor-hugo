@@ -254,7 +254,7 @@ data = data.drop('Facility Type', axis = 1)
 
 
 ```python
-
+#Status
 dummies = pd.get_dummies(data['Status'])
 for a in dummies.columns:
 	data['Status_%s' % a] = dummies[a]
@@ -269,6 +269,9 @@ for a in dummies.columns:
 	data['CommunityBoard_%s' % a] = dummies[a]
 
 data = data.drop('Address Type', axis = 1)
+```
+
+```python
 
 #Location Type
 dummies = pd.get_dummies(data['Location Type'])
@@ -280,8 +283,9 @@ data = data.drop('Location Type', axis = 1)
 
 drop = ['Incident Address', 'Descriptor', 'Closed Date', 'Cross Street 1', 'Cross Street 2','Intersection Street 1', 'Intersection Street 2', 'Due Date', 'Resolution Action Updated Date', 'X Coordinate (State Plane)', 'Y Coordinate (State Plane)', 'Park Borough'] 
 data.drop(drop, axis=1, inplace = True)
+```
 
-
+```python
 #Just O.H.A. Borough
 dummies = pd.get_dummies(data['Borough'])
 for a in dummies.columns:
