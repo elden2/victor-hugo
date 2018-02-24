@@ -254,8 +254,6 @@ data = data.drop('Facility Type', axis = 1)
 
 
 ```python
-#Status
-
 
 dummies = pd.get_dummies(data['Status'])
 for a in dummies.columns:
