@@ -294,18 +294,6 @@ for a in dummies.columns:
 data = data.drop('Borough', axis = 1)
 ```
 
-```python
-
-#agency
-dummies = pd.get_dummies(data['Agency'])
-for a in dummies.columns:
-	data['Agency_%s' % a] = dummies[a]
-
-data = data.drop('Agency', axis = 1)
-
-data.to_csv('final_data.csv')
-```
-
 
 We now have a dataset we can begin to look at.
 
