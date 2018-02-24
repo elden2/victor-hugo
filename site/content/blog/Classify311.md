@@ -232,13 +232,20 @@ I got rid of a few last data points I didn't use (there are things here I may c
 
 ```python
 
+test
+
+```
+
+
+```pyton
+
 def land(x):
 	if type(x) == str:
 		return 1
 	else:
 		return 0
 
-
+```
 
 data['Landmark'] = data['Landmark'].apply(land)
 
