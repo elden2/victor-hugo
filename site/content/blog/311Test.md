@@ -1,7 +1,7 @@
 ---
 author: "Zachary Swarth"
 date: 2018-02-21
-title: Classifying 311 Noise Complaint Data - Cleaning the data - Test page.
+title: Classifying 311 Noise Complaint Data
 ---
 
 
@@ -84,38 +84,24 @@ for clf in classifiers:
 
 
 
-```python
-#Lets just go with Decision Tree's and Random Forest Classifiers
-```
+Lets just look at Decision Tree's and Random Forest Classifiers
+This is most certainly not a good idea - we're not really understanding what's happening with the data.
+Throwing a million classifiers at something and just seeing what works is a good way to get garbage results.  It's also not a good way to learn much.
+
+But for today, it's gonna give me a starting place.
 
 
 ```python
-# This is not a good way -- we're not really understanding what's happening with the data.
-```
-
-
-```python
-#Throwing a million classifiers at something and just seeing what works is a good way to get garbage results.
-```
-
-
-```python
-#But for today, it's gonna give me a starting place.
 
 decision_tree.fit(X_train, y_train)
-
 ```
-
-
-
-
+    
     DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
                 max_features=None, max_leaf_nodes=None,
                 min_impurity_decrease=0.0, min_impurity_split=None,
                 min_samples_leaf=1, min_samples_split=2,
                 min_weight_fraction_leaf=0.0, presort=False, random_state=None,
                 splitter='best')
-
 
 
 
@@ -138,12 +124,11 @@ random_forest.fit(X_train, y_train)
 
 
 
-```python
-#Decision tree's tend to overfit data with lots of samples.  I'm gong to build one of these from scratch and put a blog post about it soon.
-#Our data has quite a few attributes - so lets get the accuracy, but then look at what it's classifying well, and waht it's classifying poroly
 
+Decision tree's tend to overfit data with lots of samples.  I'm gong to build one of these from scratch and put a blog post about it soon.
 
-```
+Our data has quite a few attributes - so lets get the accuracy, but then look at what it's classifying well, and waht it's classifying poroly
+
 
 
 ```python
@@ -195,20 +180,7 @@ decision_tree.feature_importances_
 
 
 
-
-```python
-#This gives us a weighting of relative importances scalled to a total of 1.
-# as seen:
-sum(decision_tree.feature_importances_)
-#well come back to these soon.
-```
-
-
-
-
-    1.0000000000000002
-
-
+This gives us a weighting of relative importances scalled to a total of 1.
 
 
 ```python
@@ -216,17 +188,15 @@ decision_tree.score(X_test, y_test)
 
 ```
 
-
-
-
     0.92893333333333339
 
 
 
+This gives us an accuracy, but we still don't know what we're getting wrong.  And considering this is pretty skewed data (some classes have very few poitnts), we're gonna need to see how were doing across the board.  92% acacuracy doesn't mean much if 92% of the data falls into one catagory!
+
+
 
 ```python
-#This gives us an accuracy, but we still don't know what we're getting wrong.  And considering this is pretty skewed data
-#(some classes have very few poitnts), we're gonna need to see how were doing across the board.
 
 y_test = y_test.reset_index(drop=True)
 
@@ -249,45 +219,23 @@ def correct_percentage(predicted, test_set):
 
 RS, CP = correct_percentage(prediction, y_test)
 print RS, CP
-
-
-### go over test and training data to see if we're over fitting.
 ```
+
+go over test and training data to see if we're over fitting.
+
 
     {'Noise': [2176, 0], 'Noise - House of Worship': [44, 2], 'Noise - Residential': [8172, 10], 'Noise - Helicopter': [50, 0], 'Noise - Vehicle': [287, 486], 'Collection Truck Noise': [11, 0], 'Noise - Street/Sidewalk': [1381, 546], 'Noise - Commercial': [1598, 1], 'Noise - Park': [171, 0], 'Noise Survey': [65, 0]} {'Noise': 100.0, 'Noise - House of Worship': 95.65217391304348, 'Noise - Residential': 99.8777804937668, 'Noise - Helicopter': 100.0, 'Noise - Vehicle': 37.128072445019406, 'Collection Truck Noise': 100.0, 'Noise - Street/Sidewalk': 71.66580176440063, 'Noise - Park': 100.0, 'Noise - Commercial': 99.93746091307067, 'Noise Survey': 100.0}
 
 
 
+So, looking at this data, we did pretty well on most topics, and absoutly aweful on Vehicle Noise and poorly on Stree/Sidewalk noise.
+
+Lets just plot it to see
+
 ```python
-## So, looking at this data, we did pretty well on a few topics, and absoutly aweful on a few others.
-## Lets just plot it to see
 
 import matplotlib.pyplot as plt
-```
 
-
-```python
-CP.keys()
-```
-
-
-
-
-    ['Noise',
-     'Noise - House of Worship',
-     'Noise - Residential',
-     'Noise - Helicopter',
-     'Noise - Vehicle',
-     'Collection Truck Noise',
-     'Noise - Street/Sidewalk',
-     'Noise - Commercial',
-     'Noise - Park',
-     'Noise Survey']
-
-
-
-
-```python
 plt.bar(xrange(len(CP.keys())),CP.values())
 ```
 
@@ -303,23 +251,17 @@ plt.bar(xrange(len(CP.keys())),CP.values())
 
 
 
+It's not a huge wonder that we didn't do well with Vehicle data.  A Vehicle could really be anywhere in the city.
+Same with Street and Sidewalk
+
+Maybe there is some other data that we removed that we could work with to help this out.
+
+In the meantime, the SciKit Learn documentation has a lot of tips on practical use of decision trees.  Lets start workign through that
+
+
 ```python
-## It's not a huge wonder that we didn't do well with Vehicle data.  A Vehicle could really be anywhere in the city.
-## Same with Street and Sidewalk
-
-## Maybe there is some other data that we removed that we could work with to help this out.
-
-## In the meantime, the SciKit Learn documentation has a lot of tips on
-#practical use of decision trees.  LEts start workign through that
-
-
-#Lets make our tree simpler
 decision_tree2 = DecisionTreeClassifier(min_weight_fraction_leaf = .01)
 
-```
-
-
-```python
 decision_tree2.fit(X_train, y_train)
 ```
 
@@ -346,7 +288,7 @@ decision_tree2.score(X_test,y_test)
     0.93466666666666665
 
 
-
+Lets look at exactly which attributes are playing a part.
 
 ```python
 s = decision_tree2.feature_importances_
@@ -412,70 +354,13 @@ for i in sol[::-1]:
     zip_1137.0
     zip_1136.0
     zip_1135.0
-    zip_1124.0
-    zip_1123.0
-    zip_1122.0
-    zip_1121.0
-    zip_1120.0
-    zip_1110.0
-    zip_1104.0
-    zip_1100.0
-    zip_1047.0
-    zip_1046.0
-    zip_1031.0
-    zip_1030.0
-    zip_1028.0
-    zip_1016.0
-    zip_1012.0
-    zip_1011.0
-    zip_1010.0
-    zip_1007.0
-    zip_1006.0
-    zip_1004.0
-    zip_1002.0
-    zip_1001.0
-    zip_1000.0
-    zip_8.0
-    agency_NYPD
-    agency_EDC
-    agency_DSNY
-    agency_DEP
-    agency_3-1-1
-    Weekday_4
-    Weekday_3
-    Weekday_2
-    Weekday_1
-    Weekday_0
-    Year_2017
-    Year_2016
-    Year_2015
-    Year_2014
-    Year_2013
-    Year_2012
-    month_12
-    month_11
-    month_10
-    month_9
-    month_8
-    month_7
-    month_6
-    month_5
-    month_4
-    month_3
-    month_2
-    month_1
-    Landmark
-    Unnamed: 0.1
+    ......
 
 
+So, looking at this data, I'm going to stop here and abandon this project for now.
 
-```python
-#So, looking at this data, I'm going to stop here.
-# The only real attributes that seem to matter are "Address Type" - which essentaully give away the answers.
-#I guess a should have seen that comming from far far away.
+The only real attributes that seem to matter are "Address Type" - which essentaully give away the answers, making this sort of a silly project.
+I guess a should have seen that comming from far far away.
 
-#This would be a far more intersting project if i had taken out the AddressType ahead of time.
-## That will be a project for another day.
-```
-
-## 
+This would be a far more intersting project if i had taken out the AddressType ahead of time.
+But that will be a project for another day.
