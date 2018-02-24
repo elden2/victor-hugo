@@ -304,11 +304,8 @@ for a in dummies.columns:
 data = data.drop('Agency', axis = 1)
 
 data.to_csv('final_data.csv')
+```
 
-target = data['Complaint Type']
-train = data.drop(['Complaint Type'], axis=1)
-
-​```
 
 We now have a dataset we can begin to look at.
 
