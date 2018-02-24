@@ -227,10 +227,13 @@ data = data.drop('City', axis = 1)
 
 ```
  
-I got rid of a few last data points I didn't use (there are things here I may come back to later, but for now I just want something simple I can play with and improve upon).  For example, community board is probably important, and I'd like to go add this in later.  I also just changed the landmark data into a binary heading.
+I got rid of a few last data points I didn't use (there are things here I may come back to later, but for now I just want something simple I can play with and improve upon).  For example, community board is probably important, and I'd like to go add this in later.  I also just changed the landmark data into a binary value.
+
+
 
 ```python
-​#Make Landmarks Binary
+
+​Make Landmarks Binary
 def land(x):
 	if type(x) == str:
 		return 1
