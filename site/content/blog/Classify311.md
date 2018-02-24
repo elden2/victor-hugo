@@ -292,7 +292,9 @@ for a in dummies.columns:
 	data['Borough_%s' % a] = dummies[a]
 
 data = data.drop('Borough', axis = 1)
+```
 
+```python
 
 #agency
 dummies = pd.get_dummies(data['Agency'])
