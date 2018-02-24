@@ -5,6 +5,10 @@ title: Classifying 311 Noise Complaint Data - Cleaning the data - Test page.
 ---
 
 
+*This was a pretty failed attempt.  I got decent results, but for pretty aweful reasons that I should have seen at the very beginning*
+
+I'm leaving the entire Jupyter notebook below as it's a good indication of exactly what was going through my mind as I'm going through it - I commented all long in prepeation for writing a blog post about it.
+
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
