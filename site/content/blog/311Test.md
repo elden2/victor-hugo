@@ -1,5 +1,5 @@
 ---
-author: "Zachary Swarth"
+author: "Zachary S"
 date: 2018-02-21
 title: Classifying 311 Noise Complaint Data
 ---
@@ -7,7 +7,7 @@ title: Classifying 311 Noise Complaint Data
 
 *This was a pretty failed attempt.  I got decent results, but for pretty aweful reasons that I should have seen at the very beginning*
 
-I'm leaving the entire Jupyter notebook below as it's a good indication of exactly what was going through my mind as I'm going through it - I commented all long in prepeation for writing a blog post about it.
+The following code comes from a Jupyter notebook.  Next project is to figure out a way to import that notebook directly into this website.
 
 
 ```python
@@ -84,7 +84,7 @@ for clf in classifiers:
 
 
 
-Lets just look at Decision Tree's and Random Forest Classifiers
+Lets just look at Decision Tree's and Random Forest Classifiers. 
 This is most certainly not a good idea - we're not really understanding what's happening with the data.
 Throwing a million classifiers at something and just seeing what works is a good way to get garbage results.  It's also not a good way to learn much.
 
@@ -95,7 +95,6 @@ But for today, it's gonna give me a starting place.
 
 decision_tree.fit(X_train, y_train)
 ```
-    
     DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
                 max_features=None, max_leaf_nodes=None,
                 min_impurity_decrease=0.0, min_impurity_split=None,
@@ -127,7 +126,7 @@ random_forest.fit(X_train, y_train)
 
 Decision tree's tend to overfit data with lots of samples.  I'm gong to build one of these from scratch and put a blog post about it soon.
 
-Our data has quite a few attributes - so lets get the accuracy, but then look at what it's classifying well, and waht it's classifying poroly
+Our data has quite a few attributes - so lets get the accuracy, but then look at what it's classifying well, and what it's classifying poorly.
 
 
 
@@ -158,25 +157,7 @@ decision_tree.feature_importances_
              0.00000000e+00,   7.41918447e-05,   1.95832114e-04,
              1.05516346e-04,   8.86846589e-04,   9.37546315e-04,
              3.79015891e-04,   1.99641727e-05,   0.00000000e+00,
-             5.15196569e-04,   1.29358451e-03,   1.12055840e-03,
-             1.56767853e-03,   1.31115726e-03,   2.12622421e-04,
-             4.09649269e-04,   3.10059073e-04,   3.74656288e-04,
-             1.81355476e-04,   6.17351397e-04,   3.27930888e-04,
-             4.05871647e-04,   1.81950665e-04,   0.00000000e+00,
-             1.59629677e-03,   2.52273994e-04,   9.82568468e-04,
-             6.29850777e-04,   1.96516953e-03,   5.08714435e-04,
-             4.83505282e-04,   2.80630121e-04,   3.53504220e-04,
-             2.14612673e-04,   0.00000000e+00,   0.00000000e+00,
-             1.26428131e-05,   1.81782348e-04,   2.23987674e-06,
-             0.00000000e+00,   1.29427096e-03,   3.48247402e-04,
-             4.28474991e-04,   9.51175912e-04,   0.00000000e+00,
-             0.00000000e+00,   0.00000000e+00,   4.80387907e-05,
-             0.00000000e+00,   8.92988429e-03,   2.68097028e-02,
-             4.71757913e-01,   0.00000000e+00,   0.00000000e+00,
-             1.48813301e-01,   6.16786915e-04,   4.91856469e-04,
-             1.28967574e-03,   5.33399232e-04,   2.27476316e-04,
-             0.00000000e+00,   4.45598173e-03,   1.98885604e-01,
-             1.53808543e-03,   0.00000000e+00,   2.37830377e-03])
+             .......])
 
 
 
@@ -310,50 +291,6 @@ for i in sol[::-1]:
     Weekday_5
     Weekday_6
     zip_1003.0
-    zip_1045.0
-    Street_Type_STREET
-    Street_Type_AVENUE
-    Unnamed: 0
-    Agency_NYPD
-    Agency_EDC
-    Agency_DSNY
-    Agency_3-1-1
-    Borough_Unspecified
-    Borough_STATEN ISLAND
-    Borough_BROOKLYN
-    Borough_BRONX
-    AddressType_Store/Commercial
-    AddressType_Sidewalk
-    AddressType_House of Worship
-    AddressType_Home
-    AddressType_Bar/Restaurant
-    AddressType_Above Address
-    CommunityBoard_PLACENAME
-    CommunityBoard_LATLONG
-    CommunityBoard_BLOCKFACE
-    CommunityBoard_ADDRESS
-    Status_Started
-    Status_Open
-    Status_Closed
-    Status_Assigned
-    Facility_Precinct
-    Facility_DSNY Garage
-    City_STATEN ISLAND
-    City_RARE
-    City_NEW YORK
-    City_BROOKLYN
-    City_BRONX
-    Street_Type_ROAD
-    Street_Type_BROADWAY
-    zip_10000.0
-    zip_1169.0
-    zip_1143.0
-    zip_1142.0
-    zip_1141.0
-    zip_1138.0
-    zip_1137.0
-    zip_1136.0
-    zip_1135.0
     ......
 
 
