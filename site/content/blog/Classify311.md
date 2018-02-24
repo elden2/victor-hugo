@@ -140,9 +140,6 @@ data['Month'] = data['Created Date'].apply(month)
 
 ```
 
-
- 
-
 Depending on what model I choose to run on these, I also need to find a way to deal with the categorical data as well as the non ordered data.
 For the data, perhaps I could have dealt with the months as one numerical column (as the order does matter) as opposed to 12 categories (same with days of the week), but i decided to split them up anyway.
 
@@ -168,7 +165,6 @@ data = data.drop('Month', axis = 1)
 
 ```
  
-
 There were a ton of zip codes.  I grouped them together in groups of 10, and labeled all the unlabeled ones with their own zip code.
 
 For the Street name, i divided each section into "Other", "Avenue", "Street", "Broadway", "Road".  If you know NYC, different street names give some indication into whether we're looking at a residential or commercial region, or what part of the city we're in (i.e., Road isn't very common in Manhattan.)
@@ -198,11 +194,7 @@ for a in dummies.columns:
 data = data.drop('Incident Zip', axis = 1)
 
 ```
-​
- 
-
 If we look at the city data, it's interesting.  4 of the 5 boroughs were generally labeled.  however, Queens was chopped up very finely amongst different neighborhoods.  I'm sure there a decent about of predictive values here, but I din't want to make my model too specific, so I generalized all non New York, Brooklyn, Bronx, and Staten Island lables as "Rare'.
-
 ​
 ```python
 
@@ -225,10 +217,7 @@ for a in dummies.columns:
 data = data.drop('City', axis = 1)
 
 ```
- 
 I got rid of a few last data points I didn't use (there are things here I may come back to later, but for now I just want something simple I can play with and improve upon).  For example, community board is probably important, and I'd like to go add this in later.  I also just changed the landmark data into a binary value.
-
-
 
 ```python
 
@@ -293,8 +282,5 @@ for a in dummies.columns:
 
 data = data.drop('Borough', axis = 1)
 ```
-  
 
 We now have a dataset we can begin to look at.
-
-
