@@ -173,7 +173,6 @@ There were a ton of zip codes.  I grouped them together in groups of 10, and la
 
 For the Street name, i divided each section into "Other", "Avenue", "Street", "Broadway", "Road".  If you know NYC, different street names give some indication into whether we're looking at a residential or commercial region, or what part of the city we're in (i.e., Road isn't very common in Manhattan.)
 
-Agency we don't have to work with too much.
 
 ```python
 
@@ -233,7 +232,6 @@ I got rid of a few last data points I didn't use (there are things here I may c
 
 ```python
 
-​Make Landmarks Binary
 def land(x):
 	if type(x) == str:
 		return 1
@@ -245,7 +243,7 @@ def land(x):
 data['Landmark'] = data['Landmark'].apply(land)
 
 
-### Facility Types
+#Facility Types
 
 dummies = pd.get_dummies(data['Facility Type'])
 for a in dummies.columns:
@@ -254,7 +252,7 @@ for a in dummies.columns:
 
 data = data.drop('Facility Type', axis = 1)
 
-## Status
+#Status
 
 
 dummies = pd.get_dummies(data['Status'])
@@ -272,7 +270,7 @@ for a in dummies.columns:
 
 data = data.drop('Address Type', axis = 1)
 
-##Location Type
+#Location Type
 dummies = pd.get_dummies(data['Location Type'])
 for a in dummies.columns:
 	data['AddressType_%s' % a] = dummies[a]
@@ -280,14 +278,8 @@ for a in dummies.columns:
 data = data.drop('Location Type', axis = 1)
 
 
-
-
-
-
 drop = ['Incident Address', 'Descriptor', 'Closed Date', 'Cross Street 1', 'Cross Street 2','Intersection Street 1', 'Intersection Street 2', 'Due Date', 'Resolution Action Updated Date', 'X Coordinate (State Plane)', 'Y Coordinate (State Plane)', 'Park Borough'] 
 data.drop(drop, axis=1, inplace = True)
-
-
 
 
 #Just O.H.A. Borough
@@ -296,7 +288,6 @@ for a in dummies.columns:
 	data['Borough_%s' % a] = dummies[a]
 
 data = data.drop('Borough', axis = 1)
-
 
 
 #agency
@@ -308,13 +299,10 @@ data = data.drop('Agency', axis = 1)
 
 data.to_csv('final_data.csv')
 
-
-
 target = data['Complaint Type']
 train = data.drop(['Complaint Type'], axis=1)
 
-​
- ```
+​```
 
 We now have a dataset we can begin to look at.
 
