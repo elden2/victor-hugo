@@ -293,7 +293,7 @@ for a in dummies.columns:
 
 data = data.drop('Borough', axis = 1)
 ```
-
+  
 
 We now have a dataset we can begin to look at.
 
