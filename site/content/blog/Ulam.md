@@ -150,8 +150,8 @@ a = Ulam(size=200)
 a.show()
 ```
 
-![Spiral](/img/Spiral1.png)
-![Spiral](/img/spiral2.png)
-![Spiral](/img/spiral3.png)
-![Spiral](/img/spiral4.png)
-![Spiral](/img/Spiral5.png)
+![Spiral](/img/Spiral1.jpg)
+![Spiral](/img/spiral2.jpg)
+![Spiral](/img/spiral3.jpg)
+![Spiral](/img/spiral4.jpg)
+![Spiral](/img/Spiral5.jpg)
