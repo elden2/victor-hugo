@@ -15,7 +15,7 @@ Take a series of integers and arrange them in an square lattice spiraling outwar
 
 
 ![Integrer Spiral from Wiki](/igm/Ulam.png = 200x)
-![Integrer Spiral from Wiki2](/img/Ulam2.png)
+![Integrer Spiral from Wiki2](/img/Ulam2.png = 200x)
 
 Doing this up to 100 is easy enough by hand, but a little python code, and we can see this pattern holds true for quite a while.
 
