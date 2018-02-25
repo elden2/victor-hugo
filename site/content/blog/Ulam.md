@@ -2,11 +2,6 @@
 author: "Zachary S"
 date: 2018-02-21
 title: Making a Ulam Spiral
-keywords:
--Ulam Spiral
--Python
--Prime Spiral
-description: Write a python code to plot Ulam Spirals for any dimension.
 ---
 
 *Ulam Spirals*
