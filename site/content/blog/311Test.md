@@ -158,14 +158,6 @@ import matplotlib.pyplot as plt
 plt.bar(xrange(len(CP.keys())),CP.values())
 ```
 
-
-
-
-    <Container object of 10 artists>
-
-
-
-
 ![png](output_14_1.png)
 
 

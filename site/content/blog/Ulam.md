@@ -2,9 +2,15 @@
 author: "Zachary S"
 date: 2018-02-21
 title: Making a Ulam Spiral
+keywords:
+-Ulam Spiral
+-Python
+-Prime Spiral
+description: Write a python code to plot Ulam Spirals for any dimension.
 ---
 
 *Ulam Spirals*
+Creating a program to plot Ulam Spirals for any dimension.
 
 ![Spiral](/img/Spiral1.jpg)
 
@@ -18,7 +24,7 @@ It's quite simple to understand the process, almost impossible to understand the
 Take a series of integers and arrange them in an square lattice spiraling outward.  Color in all the prime (or not prime, whichever you would like) numbers, and you'll find that the primes lie on long diagonals.
 
 
-![Integrer Spiral from Wiki](/img/Ulam.50.jpg)
+![Integrer Spiral from Wiki](/img/Ulam.jpg)
 
 
 Doing this up to 100 is easy enough by hand, but a little python code, and we can see this pattern holds true for quite a while.
@@ -155,6 +161,4 @@ a.show()
 ```
 
 ![Spiral](/img/spiral2.jpg)
-![Spiral](/img/spiral3.jpg)
-![Spiral](/img/spiral4.jpg)
 ![Spiral](/img/Spiral5.jpg)
