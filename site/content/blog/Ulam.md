@@ -2,9 +2,15 @@
 author: "Zachary S"
 date: 2018-02-21
 title: Making a Ulam Spiral
+keywords:
+  - Ulam Spiral
+  - Prime Spiral
+  - Python
+  - Prime Seive
 ---
 
 *Ulam Spirals*
+Test
 Creating a program to plot Ulam Spirals for any dimension.
 
 ![Spiral](/img/Spiral1.jpg)
