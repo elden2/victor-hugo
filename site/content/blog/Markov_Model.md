@@ -1,5 +1,5 @@
 ---
-author: "Zachary Swa"
+author: "Zachary S"
 date: 2018-02-20
 title: Marking A Markov Chain Speech Predictor
 ---
