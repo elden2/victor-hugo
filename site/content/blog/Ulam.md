@@ -10,7 +10,6 @@ keywords:
 ---
 
 *Ulam Spirals*
-Test
 Creating a program to plot Ulam Spirals for any dimension.
 
 ![Spiral](/img/Spiral1.jpg)
