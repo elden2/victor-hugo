@@ -2,7 +2,6 @@
 <html lang="en-US">
 
 <head>
-	<meta name="generator" content="Hugo 0.36.1" />
 <meta charset="utf-8">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,24 +13,24 @@
 <meta property="og:site_name" content="Learning Data Science from The Ground Up" />
 <meta property="og:locale" content="nn_NO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/" />
-<meta property="og:title" content="Learning Data Science from The Ground Up" />
-<meta property="twitter:title" content="Learning Data Science from The Ground Up">
+<meta property="og:url" content="/blog/marking-a-markov-chain-speech-predictor/" />
+<meta property="og:title" content="Marking A Markov Chain Speech Predictor" />
+<meta property="twitter:title" content="Marking A Markov Chain Speech Predictor">
 
     <meta property="og:image" content="/img/banner.png">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:image" content="/img/banner.png">
 
-<meta property="og:description" content="Learning Data Sceince and Computer Science from scratch">
-<meta property="twitter:description" content="Learning Data Sceince and Computer Science from scratch">
+<meta property="og:description" content="">
+<meta property="twitter:description" content="">
 
 <title>
 
 
-    Learning Data Science from The Ground Up
+     Learning Data Science from The Ground Up - Marking A Markov Chain Speech Predictor 
 
 </title>
-<link rel="canonical" href="/">
+<link rel="canonical" href="/blog/marking-a-markov-chain-speech-predictor/">
 
 
 <style media="screen">
@@ -1055,8 +1054,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Learning Data Science from The Ground Up" />
-
 
 </head>
 
@@ -1064,7 +1061,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         <a href="/"><img class="logo" src="/img/logo.png" alt="logo" /></a>
@@ -1095,68 +1092,267 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-<div class="main column">
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            
-                <div class="markdown">
-                <p>Welcome to computer science from a novice.</p>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
-<p>My name is Zach, and I&rsquo;m a math and physics teacher out in California.  I&rsquo;ve been learning a bit of data science and computer science for fun lately.  Follow my progress as I play around with algorithms, cleaning data, general programming, machine learning, and whatever else I find myself stumbling into.</p>
+    Marking A Markov Chain Speech Predictor
 
-<p>There&rsquo;s no specific path or order to my projects.  They range from Kaggle competitions, to building very simple ML libraries, to <a href="http://www.projecteuler.net">http://www.projecteuler.net</a> problems.  Really just a random assortment.  All comments, suggestions, hints, and general thoughts are encourgaged.</p>
+</div>
 
                 </div>
-            
-
-            
-                <div class="posts">
-                
-                
-                    <div class="page-heading">Latest posts</div>
-                    <ul>
+                <div class="meta">
+                    <div class="date" title="Tue Feb 20 2018 00:00:00 UTC">Feb 20, 2018</div>
                     
-                        <li class="groupby">Feb, 2018</li>
                         
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/making-a-ulam-spiral/"><span>Making a Ulam Spiral</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/classifying-311-noise-complaint-data---part-ii/"><span>Classifying 311 Noise Complaint Data - Part II</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/classifying-311-noise-complaint-data---part-i./"><span>Classifying 311 Noise Complaint Data - Part I.</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 20, 2018</span>
-    <a href="/blog/marking-a-markov-chain-speech-predictor/"><span>Marking A Markov Chain Speech Predictor</span></a>
-</li>
-
+                        <div class="author middot" title="Zachary S">Zachary S</div>
                         
                     
-                    </ul>
-
-                    
-                
+                    <div class="reading-time middot">6 minute read</div>
+                    <div class="tags">
+                        <ul>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
                 </div>
-            
-
-            <div class="best-posts">
-            
-            
             </div>
+            <div class="markdown">
+                
+    
+    <p><em>A program to write in the style of Moby Dick</em></p>
+
+<p>The idea of a Markov Chain is pretty simple.  Imagine you were to hear the beginning of the sentence &ldquo;The United States of&hellip;..&rdquo; and you needed to fill in the rest.  Chances are, at least if you are from San Francisco in 2018, you would assume &ldquo;America&rdquo; is the next word (as opposed to &ldquo;The United States of Brazil,&rdquo; (which was Brazil&rsquo;s official name half a century ago).  You guessed &ldquo;America&rdquo; simply because statistically, this is by far the most common next word spoken after &ldquo;Unite States of&rdquo;.</p>
+
+<p>My little speech predictor does exactly this.  Based on a collection of texts (I started with Moby Dick), I analyzed every 2 and 3 word phrase, and attempted to determine the most common next word you would find.  Once you have this data, you can start any sentence, and then just have the program fill in words that would make statistical sense until you have a paragraph.</p>
+
+<p>You can find the full code at <a href="https://github.com/elden2/TextPredict">https://github.com/elden2/TextPredict</a></p>
+
+<p>Lets start with a few libraries</p>
+
+<pre><code class="language-python">
+import random
+import sys
+import os
+from itertools import groupby
+import pickle
+
+</code></pre>
+
+<p>My predictor object as a few attributes.</p>
+
+<p>depth: how many words back we are going to use to predict.  The code currently doesn&rsquo;t support this being changed, but is a placeholder for updating it later.</p>
+
+<p>data: text that our model will learn from</p>
+
+<p>three dictionaries: a collection of three word phrases, two word phrases, and single words.</p>
+
+<p>Random: it&rsquo;s easy to get stuck in repeating loops.  This tells us how often we might want to throw some noise into our model.</p>
+
+<pre><code class="language-python">
+
+class Predictor(object):
+	def __init__(self, data = 'as long string', depth = 3, random = 15):
+		self.depth = depth
+		self.data = data.split()
+
+		self.dictionary_tripple= {}
+		self.dictionary_doubles = {}
+		self.dictionary_single = {}
+
+		self.tripple = []
+		self.target = []
+		self.get_trip()
+		self.pair_dictionary_tripples()
+
+
+		self.doubles = []
+		self.doubles_target = []
+		self.get_doubles()
+		self.pair_dictionary_doubles()
+
+
+
+		self.single_pair()
+		self.random = random
+		self.error_count = [0,0,0,0] ##Number of tripples, doubles, singles, none used
+
+</code></pre>
+
+<p>Grabbing all our keys:</p>
+
+<pre><code class="language-python">
+	def get_trip(self):
+		a = len(self.data)
+		for i in range(0, a-self.depth):
+			self.tripple.append(self.data[i]+' '+self.data[i+1]+' ' + self.data[i+2])
+			self.target.append(self.data[i+3])
+
+	def get_doubles(self):
+		a = len(self.data)
+		for i in range(0,a-2):
+			self.doubles.append(self.data[i]+' '+self.data[i+1])
+			self.doubles_target.append(self.data[i+2])
+
+	def pair_dictionary_tripples(self):
+		a = len(self.target)
+		for i in range(0,a):
+			if self.tripple[i] in self.dictionary_tripple:
+				self.dictionary_tripple[self.tripple[i]].append(self.target[i])
+			else:
+				self.dictionary_tripple[self.tripple[i]] = [self.target[i]]
+
+	def pair_dictionary_doubles(self):
+		a = len(self.doubles_target)
+		for i in range(0,a):
+			if self.doubles[i] in self.dictionary_doubles:
+				self.dictionary_doubles[self.doubles[i]].append(self.doubles_target[i])
+			else:
+				self.dictionary_doubles[self.doubles[i]] = [self.doubles_target[i]]
+
+
+	def single_pair(self):
+		a = len(self.data)
+		for i in range(0, a-1):
+			if self.data[i] in self.dictionary_single:
+				self.dictionary_single[self.data[i]].append(self.data[i+1])
+			else:
+				self.dictionary_single[self.data[i]] = [self.data[i+1]]
+</code></pre>
+
+<p>The above functions takes our text and chops it up into appropriate length keys.  If a key is not in the dictionary, it adds a new entry with  the word that follows as a single element list as the value.  If the key already exits, the next word is added in the value&rsquo;s list.</p>
+
+<p>For Moby dick, we get a dictionary of triples that is slightly under 200,000 entries long.  An example of a dictionary entry:</p>
+
+<p>MobyDick[&ldquo;the Sperm Whale&rdquo;] results in:</p>
+
+<p>[&lsquo;fishermen.&rsquo;, &lsquo;fishery&rsquo;, &lsquo;fishery&rsquo;, &lsquo;not&rsquo;, &lsquo;fishery,&rsquo;, &lsquo;was&rsquo;, &lsquo;when&rsquo;, &lsquo;Fishery,&rsquo;, &lsquo;HAS&rsquo;, &lsquo;when,&rsquo;, &lsquo;drawings&rsquo;, &lsquo;designated&rsquo;, &lsquo;is&rsquo;, &lsquo;presents,&rsquo;, &lsquo;in&rsquo;, &lsquo;is&rsquo;, &lsquo;and&rsquo;, &lsquo;and&rsquo;, &lsquo;are&rsquo;, &lsquo;only&rsquo;, &lsquo;were&rsquo;, &lsquo;stove&rsquo;, &lsquo;embraces&rsquo;, &lsquo;is&rsquo;, &lsquo;ever&rsquo;, &lsquo;has&rsquo;, &lsquo;be&rsquo;, &lsquo;has&rsquo;, &lsquo;is&rsquo;, &lsquo;is&rsquo;, &lsquo;will&rsquo;, &lsquo;only&rsquo;, &lsquo;has&rsquo;, &lsquo;is&rsquo;, &lsquo;into&rsquo;, &lsquo;presents&rsquo;, &lsquo;to&rsquo;, &lsquo;thus&rsquo;]</p>
+
+<p>Since &lsquo;is&rsquo; comes up 5 times, it is the most common word.  We now want our program to predict &lsquo;is&rsquo; if we were to enter &lsquo;the Sperm Whale&rsquo; into our program,</p>
+
+<p>Input: &ldquo;the Sperm Whale&rdquo;</p>
+
+<p>output &ldquo;is&rdquo;</p>
+
+<p>New Input &ldquo;Sperm Whale is&rdquo;</p>
+
+<p>Yielding the start of a paragraph &lsquo;the Sperm Whale is&hellip;.&rdquo;</p>
+
+<pre><code class="language-python">
+ 	def common_word(self, L, noise = False):
+		if noise:
+			return random.choice(L)
+		if len(L) == 1 or len(L) == 2:
+			return L[0]
+		else:
+			return max(groupby(sorted(L)), key=lambda(x, v):(len(list(v)),-L.index(x)))[0]
+
+
+	def predict_word(self, key = 'three word form', noise = False):
+		a = key.split()
+		temp= a[1]+ ' ' + a[2]
+		temp2 = a[2]
+		if temp in self.dictionary_doubles.keys():
+			self.error_count[1] += 1
+			return self.common_word(self.dictionary_doubles[temp], noise = noise)
+		if a[2] in self.dictionary_single.keys():
+			self.error_count[2] += 1
+			return self.common_word(self.dictionary_single[a[2]], noise = noise)
+		self.error_count[3] += 1
+		return self.dictionary_tripple[random.choice(self.dictionary_tripple.keys())][0]
+			
+</code></pre>
+
+<p>The noise = False section will be used at the end.  It allows us to bypass the most common word, and instead throw in a less common word that exists in the list.</p>
+
+<p>Putting it all together:</p>
+
+<pre><code class="language-python">	def get_promt(self, sentence, length = 3):
+		a = sentence.split()
+		prompt = ''
+		for i in a[-(length):]:
+			prompt += i + ' '
+		return prompt[:-1]
+
+
+	def predict_sentence(self, initial = 'who knows what', chain_length = 3, parg_length = 1000):
+		sentence = initial
+		for i in range(0, parg_length):
+			if i%self.random == 0 and i!= 0:
+				prompt = self.get_promt(sentence, length= chain_length)
+				sentence += ' ' + self.predict_word(prompt, noise = True)
+			else:
+				prompt = self.get_promt(sentence, length= chain_length)
+				sentence += ' ' + self.predict_word(prompt, noise = False)
+		return sentence
+</code></pre>
+
+<pre><code class="language-python">
+
+with open('./Texts/moby.txt', 'r') as temp:
+	moby = temp.read().replace('\n', '')
+
+
+Moby_dick = Predictor(moby, random = 10)
+
+print Moby_dick.predict_sentence('a Sperm Whale',parg_length=100)
+
+</code></pre>
+
+<p>Lets see if it works:</p>
+
+<p>&ldquo;a Sperm Whale is not a little behind the whale, the body of a whale in the sea, and they are so shut up, belted about, every way defaced, that in the sea, poor Pip came all foaming up to the deck, and pretty soon, going to the deck, and in the sea, even as the great Sperm Whale is not a little plan that had been a great fish to swallow up Jonah.&rdquo; &ndash;JONAH. &ldquo;There go flukes!&rdquo; was now all alive. He seemed to be the first place, you will be all this as it were, to the deck, and in the</p>
+
+<p>Pretty close to gibberish, but still fun.  You can find a lot of books online in txt formats for free to play around with.</p>
+
+<p>Unfortunately, this is pretty close to just picking random sections of Moby Dick, and splicing it together.  However, if you play around with how much noise, or just use 2 word chains, or put in several books at once, you can get some interesting results.</p>
+
+<p>Here is a passage from Moby Dick only using 2 word chains:</p>
+
+<p>&ldquo;a Sperm Whale is not a little behind the whale, the body of the Sperm Whale is not a little behind the whale, which some were forty-eight, some fifty yards long. He said that the whale is a thing not to be the matter. I went up in the sea, and they are afraid to mention even their names, and carry dung, lime-stone, juniper-wood, and some other thing besides me is this the end. Desecrated as the great Sperm Whale is not a rush for what is called a Commonwealth or State&ndash;(in Latin, Civitas) which is the most part, that sort of a
+[Finished in 1.8s]&rdquo;</p>
+
+
+                <br>
+            </div>
+            
+            <div class="share">
+                <a href="" class="ssk ssk-facebook"></a>
+                <a href="" class="ssk ssk-twitter"></a>
+                <a href="" class="ssk ssk-google-plus"></a>
+                <a href="" class="ssk ssk-linkedin"></a>
+            </div>
+            
+            
+                <div class="navigation">
+                    
+                    <div style="width: 100%;"></div>
+                    
+                    <div>
+                        <a href="/blog/making-a-ulam-spiral/">Making a Ulam Spiral</a>
+                        <img class="icon" src="/img/next.svg" alt="next" />
+                    </div>
+                    
+                </div>
+            
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
         </div>
     </div>
 </div>
+
 <div class="footer column">
     <div class="container">
 

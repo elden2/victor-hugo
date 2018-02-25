@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Learning Data Science from The Ground Up</title>
+    <link>/blog/</link>
+    <description>Recent content in Blog on Learning Data Science from The Ground Up</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 21 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Classifying 311 Noise Complaint Data - Part I.</title>
+      <link>/blog/classifying-311-noise-complaint-data---part-i./</link>
+      <pubDate>Wed, 21 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/classifying-311-noise-complaint-data---part-i./</guid>
+      <description>Page 1 of 2 - Cleaning the Data
+Create a model that can classify a noise complaint by type (i.e., commercial, vehicle, park, house of worship, etc.) The idea came from a friend, who I believe encountered it at a job interview at a now defunct company.
+You can find the entire code and the smaller data set here: 311 Data
+After playing around with Kaggle Competitions (if you&amp;rsquo;ve not see these, Predicting Survival on the Titanic is a great place to start, with tons of tutorials), I decided to look for data somewhere less structured.</description>
+    </item>
+    
+    <item>
+      <title>Classifying 311 Noise Complaint Data - Part II</title>
+      <link>/blog/classifying-311-noise-complaint-data---part-ii/</link>
+      <pubDate>Wed, 21 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/classifying-311-noise-complaint-data---part-ii/</guid>
+      <description>This was a pretty failed attempt. I got decent results, but for pretty aweful reasons that I should have seen at the very beginning
+The following code comes from a Jupyter notebook. Next project is to figure out a way to import that notebook directly into this website.
+First, lets grab our data and run a few classifiers just to see around where were at. I&amp;rsquo;m just using out of the box SciKit learn libraries instead of writting my own for this.</description>
+    </item>
+    
+    <item>
+      <title>Making a Ulam Spiral</title>
+      <link>/blog/making-a-ulam-spiral/</link>
+      <pubDate>Wed, 21 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/making-a-ulam-spiral/</guid>
+      <description>Ulam Spirals
+I remember coming across Ulam Spirals (also known as Prime Spirals) a few years back, and though they were fascinating.
+Stanislaw Ulam (of the Teller-Ulam Hydrogen Bomb) discovered these while doodling in a conference (and I find myself doodling the same spiral when I&amp;rsquo;m board in meetings as well.)
+It&amp;rsquo;s quite simple to understand the process, almost impossible to understand the why, and a fun little project to implement in python; all in all a perfect afternoon project.</description>
+    </item>
+    
+    <item>
+      <title>Marking A Markov Chain Speech Predictor</title>
+      <link>/blog/marking-a-markov-chain-speech-predictor/</link>
+      <pubDate>Tue, 20 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/marking-a-markov-chain-speech-predictor/</guid>
+      <description>A program to write in the style of Moby Dick
+The idea of a Markov Chain is pretty simple. Imagine you were to hear the beginning of the sentence &amp;ldquo;The United States of&amp;hellip;..&amp;rdquo; and you needed to fill in the rest. Chances are, at least if you are from San Francisco in 2018, you would assume &amp;ldquo;America&amp;rdquo; is the next word (as opposed to &amp;ldquo;The United States of Brazil,&amp;rdquo; (which was Brazil&amp;rsquo;s official name half a century ago).</description>
+    </item>
+    
+  </channel>
+</rss>

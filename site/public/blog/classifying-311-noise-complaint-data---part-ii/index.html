@@ -2,7 +2,6 @@
 <html lang="en-US">
 
 <head>
-	<meta name="generator" content="Hugo 0.36.1" />
 <meta charset="utf-8">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,24 +13,24 @@
 <meta property="og:site_name" content="Learning Data Science from The Ground Up" />
 <meta property="og:locale" content="nn_NO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/" />
-<meta property="og:title" content="Learning Data Science from The Ground Up" />
-<meta property="twitter:title" content="Learning Data Science from The Ground Up">
+<meta property="og:url" content="/blog/classifying-311-noise-complaint-data---part-ii/" />
+<meta property="og:title" content="Classifying 311 Noise Complaint Data - Part II" />
+<meta property="twitter:title" content="Classifying 311 Noise Complaint Data - Part II">
 
     <meta property="og:image" content="/img/banner.png">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:image" content="/img/banner.png">
 
-<meta property="og:description" content="Learning Data Sceince and Computer Science from scratch">
-<meta property="twitter:description" content="Learning Data Sceince and Computer Science from scratch">
+<meta property="og:description" content="">
+<meta property="twitter:description" content="">
 
 <title>
 
 
-    Learning Data Science from The Ground Up
+     Learning Data Science from The Ground Up - Classifying 311 Noise Complaint Data - Part II 
 
 </title>
-<link rel="canonical" href="/">
+<link rel="canonical" href="/blog/classifying-311-noise-complaint-data---part-ii/">
 
 
 <style media="screen">
@@ -1055,8 +1054,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Learning Data Science from The Ground Up" />
-
 
 </head>
 
@@ -1064,7 +1061,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         <a href="/"><img class="logo" src="/img/logo.png" alt="logo" /></a>
@@ -1095,68 +1092,276 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-<div class="main column">
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            
-                <div class="markdown">
-                <p>Welcome to computer science from a novice.</p>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
-<p>My name is Zach, and I&rsquo;m a math and physics teacher out in California.  I&rsquo;ve been learning a bit of data science and computer science for fun lately.  Follow my progress as I play around with algorithms, cleaning data, general programming, machine learning, and whatever else I find myself stumbling into.</p>
+    Classifying 311 Noise Complaint Data - Part II
 
-<p>There&rsquo;s no specific path or order to my projects.  They range from Kaggle competitions, to building very simple ML libraries, to <a href="http://www.projecteuler.net">http://www.projecteuler.net</a> problems.  Really just a random assortment.  All comments, suggestions, hints, and general thoughts are encourgaged.</p>
+</div>
 
                 </div>
-            
-
-            
-                <div class="posts">
-                
-                
-                    <div class="page-heading">Latest posts</div>
-                    <ul>
+                <div class="meta">
+                    <div class="date" title="Wed Feb 21 2018 00:00:00 UTC">Feb 21, 2018</div>
                     
-                        <li class="groupby">Feb, 2018</li>
                         
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/making-a-ulam-spiral/"><span>Making a Ulam Spiral</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/classifying-311-noise-complaint-data---part-ii/"><span>Classifying 311 Noise Complaint Data - Part II</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/classifying-311-noise-complaint-data---part-i./"><span>Classifying 311 Noise Complaint Data - Part I.</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 20, 2018</span>
-    <a href="/blog/marking-a-markov-chain-speech-predictor/"><span>Marking A Markov Chain Speech Predictor</span></a>
-</li>
-
+                        <div class="author middot" title="Zachary S">Zachary S</div>
                         
                     
-                    </ul>
-
-                    
-                
+                    <div class="reading-time middot">5 minute read</div>
+                    <div class="tags">
+                        <ul>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
                 </div>
-            
-
-            <div class="best-posts">
-            
-            
             </div>
+            <div class="markdown">
+                
+    
+    <p><em>This was a pretty failed attempt.  I got decent results, but for pretty aweful reasons that I should have seen at the very beginning</em></p>
+
+<p>The following code comes from a Jupyter notebook.  Next project is to figure out a way to import that notebook directly into this website.</p>
+
+<p>First, lets grab our data and run a few classifiers just to see around where were at.  I&rsquo;m just using out of the box SciKit learn libraries instead of writting my own for this.</p>
+
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+import re
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import Perceptron
+from sklearn.linear_model import SGDClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import cross_val_score
+
+data = pd.read_csv('final_data.csv')
+
+target = data['Complaint Type']
+train = data.drop(['Complaint Type'], axis=1)
+
+
+X_train, X_test, y_train, y_test = train_test_split(train, target, test_size=0.15, random_state=42)
+
+knn = KNeighborsClassifier(n_neighbors = 3)
+gaussian = GaussianNB()
+perceptron = Perceptron()
+sgd = SGDClassifier()
+decision_tree = DecisionTreeClassifier()
+random_forest = RandomForestClassifier(n_estimators=100)
+
+classifiers = [knn, gaussian,perceptron, sgd, decision_tree, random_forest]
+
+</code></pre>
+
+<pre><code class="language-python">for clf in classifiers:
+    print clf
+    print cross_val_score(clf, train, target, cv=3)
+
+</code></pre>
+
+<p>KNeighborsClassifier
+    [ 0.5372409   0.37742245  0.45350896]
+GaussianNB
+    [ 0.58016618  0.59173817  0.59281707]
+Perceptron
+    [ 0.47385788  0.54337913  0.54343065]
+SGDClassifier
+    [ 0.19248883  0.17390652  0.13291728]
+DecisionTreeClassifier
+    [ 0.92074872  0.92695146  0.9323112 ]
+RandomForestClassifier
+    [ 0.93937667  0.94279114  0.94503285]</p>
+
+<p>We&rsquo;re all over the place, with Decision Tree&rsquo;s and Random Forest far exceding the rest.</p>
+
+<p>However, throwing a ton of classifiers at something and seeing which works is a good way to get garbage results.  It&rsquo;s also not a good way to learn much.</p>
+
+<p>But for today, it&rsquo;s gonna give me a starting place, and I&rsquo;m gonig to concentrate on the Deicion Tree and Random Forest and see what I can do.</p>
+
+<pre><code class="language-python">
+decision_tree.fit(X_train, y_train)
+</code></pre>
+
+<p>Decision tree&rsquo;s tend to overfit data with lots of samples; we&rsquo;re going to need to look out for this.  ((I&rsquo;m gong to build of a decision tree library from scratch and put a blog post about it soon.)</p>
+
+<p>Our data has quite a few attributes - so lets get the accuracy, but then look at what it&rsquo;s classifying well, and what it&rsquo;s classifying poorly.</p>
+
+<pre><code class="language-python">decision_tree.feature_importances_
+
+
+</code></pre>
+
+<pre><code>array([  1.66800875e-02,   1.67718420e-02,   3.45429289e-02,
+         2.40193953e-05,   4.81334414e-04,   6.45261706e-04,
+         1.05405184e-03,   7.71337847e-04,   1.41951344e-03,
+         1.11196784e-03,   1.16202098e-03,   1.03529218e-03,
+         9.47391590e-04,   1.28060424e-03,   7.94292139e-04,
+         7.79050275e-04,   5.95337870e-05,   1.79610766e-04,
+         3.41269272e-04,   6.84720679e-04,   3.75702131e-04,
+         1.12912256e-03,   2.06782161e-03,   1.29999427e-03,
+         1.90978771e-03,   1.27415751e-03,   1.40284779e-03,
+         1.76682159e-03,   1.62450121e-03,   0.00000000e+00,
+
+         .......])
+</code></pre>
+
+<p>This gives us a weighting of relative importances scalled to a total of 1.</p>
+
+<pre><code class="language-python">decision_tree.score(X_test, y_test)
+
+</code></pre>
+
+<pre><code>0.92893333333333339
+</code></pre>
+
+<p>So we have an accuracy, but we still don&rsquo;t know what we&rsquo;re getting wrong.  And considering this is pretty skewed data (some classes have very few data points), we&rsquo;re gonna need to see how were doing across the board.  92% acacuracy doesn&rsquo;t mean much if 92% of the data falls into one catagory!</p>
+
+<pre><code class="language-python">
+y_test = y_test.reset_index(drop=True)
+
+prediction = decision_tree.predict(X_test)
+
+def correct_percentage(predicted, test_set):
+    dictionary = {}
+    percentages = {}
+    for i in range(0, len(test_set)):
+        if test_set[i] not in dictionary:
+            dictionary[test_set[i]] = [0,0]
+        if predicted[i] == test_set[i]:
+            dictionary[test_set[i]][0] += 1
+        else:
+            dictionary[test_set[i]][1] += 1
+    for i in dictionary.keys():
+        temp = sum(dictionary[i])
+        percentages[i] = dictionary[i][0]/float(temp)*100
+    return dictionary, percentages
+
+RS, CP = correct_percentage(prediction, y_test)
+print RS, CP
+</code></pre>
+
+<pre><code>{'Noise': [2176, 0], 'Noise - House of Worship': [44, 2], 'Noise - Residential': [8172, 10], 'Noise - Helicopter': [50, 0], 'Noise - Vehicle': [287, 486], 'Collection Truck Noise': [11, 0], 'Noise - Street/Sidewalk': [1381, 546], 'Noise - Commercial': [1598, 1], 'Noise - Park': [171, 0], 'Noise Survey': [65, 0]} {'Noise': 100.0, 'Noise - House of Worship': 95.65217391304348, 'Noise - Residential': 99.8777804937668, 'Noise - Helicopter': 100.0, 'Noise - Vehicle': 37.128072445019406, 'Collection Truck Noise': 100.0, 'Noise - Street/Sidewalk': 71.66580176440063, 'Noise - Park': 100.0, 'Noise - Commercial': 99.93746091307067, 'Noise Survey': 100.0}
+</code></pre>
+
+<p>I&rsquo;ll come back to our test set later and run some tests to see if we&rsquo;re over fitting.</p>
+
+<p>But looking at this data, we did pretty well on most topics, and absoutly aweful on Vehicle Noise and poorly on Stree/Sidewalk noise.</p>
+
+<p>Lets just plot it to see</p>
+
+<pre><code class="language-python">
+import matplotlib.pyplot as plt
+
+plt.bar(xrange(len(CP.keys())),CP.values())
+</code></pre>
+
+<pre><code>&lt;Container object of 10 artists&gt;
+</code></pre>
+
+<p><img src="output_14_1.png" alt="png" /></p>
+
+<p>It&rsquo;s not a huge wonder that we didn&rsquo;t do well with Vehicle data.  A Vehicle could really be anywhere in the city.
+Same with Street and Sidewalk.</p>
+
+<p>Maybe there is some other data that we removed that we could work with to help this out.</p>
+
+<p>In the meantime, the SciKit Learn documentation has a lot of tips on practical use of decision trees.  Lets start workign through that</p>
+
+<p>Let&rsquo;s get rid of some of our features that arn&rsquo;t doing much.</p>
+
+<pre><code class="language-python">decision_tree2 = DecisionTreeClassifier(min_weight_fraction_leaf = .01)
+
+decision_tree2.fit(X_train, y_train)
+</code></pre>
+
+<pre><code class="language-python">decision_tree2.score(X_test,y_test)
+</code></pre>
+
+<pre><code>0.93466666666666665
+</code></pre>
+
+<p>Looking at exactly which attributes are playing a part.</p>
+
+<pre><code class="language-python">s = decision_tree2.feature_importances_
+sol = sorted(range(len(s)), key=lambda k: s[k])
+for i in sol[::-1]:
+    print X_train.columns[i]
+</code></pre>
+
+<pre><code>AddressType_Residential Building/House
+Agency_DEP
+AddressType_Street/Sidewalk
+AddressType_Park/Playground
+Unnamed: 0.1.1
+Borough_MANHATTAN
+AddressType_Club/Bar/Restaurant
+CommunityBoard_INTERSECTION
+Borough_QUEENS
+Street_Type_OTHER
+Weekday_5
+Weekday_6
+zip_1003.0
+......
+</code></pre>
+
+<p>Now that I see what is happening, I&rsquo;m going to stop and abandon this project for now.</p>
+
+<p>The only real attributes that seem to matter are &ldquo;Address Type&rdquo; - which essentaully gives away the answers, making this sort of a silly project.
+I guess a should have seen that comming from far far away.</p>
+
+<p>This would be a far more intersting project if i had taken out the AddressType ahead of time.
+But that will be a project for another day.</p>
+
+
+                <br>
+            </div>
+            
+            <div class="share">
+                <a href="" class="ssk ssk-facebook"></a>
+                <a href="" class="ssk ssk-twitter"></a>
+                <a href="" class="ssk ssk-google-plus"></a>
+                <a href="" class="ssk ssk-linkedin"></a>
+            </div>
+            
+            
+                <div class="navigation">
+                    
+                    <div>
+                        <img class="icon" src="/img/back.svg" alt="back" />
+                        <a href="/blog/making-a-ulam-spiral/">Making a Ulam Spiral</a>
+                    </div>
+                    
+                    <div style="width: 100%;"></div>
+                    
+                    <div>
+                        <a href="/blog/classifying-311-noise-complaint-data---part-i./">Classifying 311 Noise Complaint Data - Part I.</a>
+                        <img class="icon" src="/img/next.svg" alt="next" />
+                    </div>
+                    
+                </div>
+            
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
         </div>
     </div>
 </div>
+
 <div class="footer column">
     <div class="container">
 

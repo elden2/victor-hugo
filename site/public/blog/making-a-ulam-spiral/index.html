@@ -2,7 +2,6 @@
 <html lang="en-US">
 
 <head>
-	<meta name="generator" content="Hugo 0.36.1" />
 <meta charset="utf-8">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,24 +13,24 @@
 <meta property="og:site_name" content="Learning Data Science from The Ground Up" />
 <meta property="og:locale" content="nn_NO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/" />
-<meta property="og:title" content="Learning Data Science from The Ground Up" />
-<meta property="twitter:title" content="Learning Data Science from The Ground Up">
+<meta property="og:url" content="/blog/making-a-ulam-spiral/" />
+<meta property="og:title" content="Making a Ulam Spiral" />
+<meta property="twitter:title" content="Making a Ulam Spiral">
 
     <meta property="og:image" content="/img/banner.png">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:image" content="/img/banner.png">
 
-<meta property="og:description" content="Learning Data Sceince and Computer Science from scratch">
-<meta property="twitter:description" content="Learning Data Sceince and Computer Science from scratch">
+<meta property="og:description" content="">
+<meta property="twitter:description" content="">
 
 <title>
 
 
-    Learning Data Science from The Ground Up
+     Learning Data Science from The Ground Up - Making a Ulam Spiral 
 
 </title>
-<link rel="canonical" href="/">
+<link rel="canonical" href="/blog/making-a-ulam-spiral/">
 
 
 <style media="screen">
@@ -1055,8 +1054,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Learning Data Science from The Ground Up" />
-
 
 </head>
 
@@ -1064,7 +1061,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         <a href="/"><img class="logo" src="/img/logo.png" alt="logo" /></a>
@@ -1095,68 +1092,223 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-<div class="main column">
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            
-                <div class="markdown">
-                <p>Welcome to computer science from a novice.</p>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
-<p>My name is Zach, and I&rsquo;m a math and physics teacher out in California.  I&rsquo;ve been learning a bit of data science and computer science for fun lately.  Follow my progress as I play around with algorithms, cleaning data, general programming, machine learning, and whatever else I find myself stumbling into.</p>
+    Making a Ulam Spiral
 
-<p>There&rsquo;s no specific path or order to my projects.  They range from Kaggle competitions, to building very simple ML libraries, to <a href="http://www.projecteuler.net">http://www.projecteuler.net</a> problems.  Really just a random assortment.  All comments, suggestions, hints, and general thoughts are encourgaged.</p>
+</div>
 
                 </div>
-            
-
-            
-                <div class="posts">
-                
-                
-                    <div class="page-heading">Latest posts</div>
-                    <ul>
+                <div class="meta">
+                    <div class="date" title="Wed Feb 21 2018 00:00:00 UTC">Feb 21, 2018</div>
                     
-                        <li class="groupby">Feb, 2018</li>
                         
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/making-a-ulam-spiral/"><span>Making a Ulam Spiral</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/classifying-311-noise-complaint-data---part-ii/"><span>Classifying 311 Noise Complaint Data - Part II</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/classifying-311-noise-complaint-data---part-i./"><span>Classifying 311 Noise Complaint Data - Part I.</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 20, 2018</span>
-    <a href="/blog/marking-a-markov-chain-speech-predictor/"><span>Marking A Markov Chain Speech Predictor</span></a>
-</li>
-
+                        <div class="author middot" title="Zachary S">Zachary S</div>
                         
                     
-                    </ul>
-
-                    
-                
+                    <div class="reading-time middot">3 minute read</div>
+                    <div class="tags">
+                        <ul>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
                 </div>
-            
-
-            <div class="best-posts">
-            
-            
             </div>
+            <div class="markdown">
+                
+    
+    <p><em>Ulam Spirals</em></p>
+
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="/img/Spiral1.50.jpg" src="/img/low/Spiral1.50.jpg" alt="Spiral" /></p></figure>
+
+<p>I remember coming across <a href="https://en.wikipedia.org/wiki/Ulam_spiral">Ulam Spirals</a> (also known as Prime Spirals) a few years back, and though they were fascinating.</p>
+
+<p>Stanislaw Ulam (of the Teller-Ulam Hydrogen Bomb) discovered these while doodling in a conference (and I find myself doodling the same spiral when I&rsquo;m board in meetings as well.)</p>
+
+<p>It&rsquo;s quite simple to understand the process, almost impossible to understand the why, and a fun little project to implement in python; all in all a perfect afternoon project.</p>
+
+<p>Take a series of integers and arrange them in an square lattice spiraling outward.  Color in all the prime (or not prime, whichever you would like) numbers, and you&rsquo;ll find that the primes lie on long diagonals.</p>
+
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="/img/Ulam.50.jpg" src="/img/low/Ulam.50.jpg" alt="Integrer Spiral from Wiki" /></p></figure>
+
+<p>Doing this up to 100 is easy enough by hand, but a little python code, and we can see this pattern holds true for quite a while.</p>
+
+<pre><code class="language-python">import math
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+</code></pre>
+
+<p>Few libraries.  We&rsquo;ll use numpy arrays to create a spiral, and pyplot to plot it.</p>
+
+<pre><code class="language-python">class Ulam(object):
+	def __init__(self, size = 99):
+		self.spiral = np.zeros((0,0))
+		self.size = 2*size-1
+</code></pre>
+
+<p>Notice above the size is doubled from what you enter.  The way I wrote the spiral, it was easier to do as an odd number - this ensures that you don&rsquo;t have even number sides.</p>
+
+<p>Now we&rsquo;re going to need a function to find all the primes.  We could test each one number, but since we&rsquo;re going to be doing thousands of tests, it is a lot faster to just write a sieve to find all primes up to our limit.</p>
+
+<pre><code class="language-python">
+	def prime(self, x):
+		primes = [True]*x
+		primes[0] = False
+		primes[1] = False
+		for i in range(2,int(x**.5+int(x**.5)+2)):
+			if primes[i]:
+				for j in range(i, x//2+1):
+					if i*j&lt;x:
+						primes[i*j] = False
+		return primes
+
+</code></pre>
+
+<p>Now it&rsquo;s time to actually make our curve</p>
+
+<pre><code class="language-python">
+def make_curve(self):
+
+		x  = self.size/2
+		y  = self.size/2
+		num = 1
+		pass_num = 1
+		spiral = np.zeros((self.size, self.size))
+
+		spiral[x, y] = num
+		num += 1
+
+		finished = False
+
+		while not finished:
+
+			#down
+			for i in range(2*pass_num - 1):
+				y+= 1
+				spiral[x,y] = num
+				num+= 1
+				if num&gt;self.size*self.size-5:
+					finished = True
+					break
+			
+			#right
+			for i in range(2*pass_num - 1):
+				x+= 1
+				spiral[x,y] = num
+				num+= 1
+				if num&gt;self.size*self.size-5:
+					finished = True
+					break
+
+			#up
+			for i in range(2*pass_num):
+				y -= 1
+				spiral[x,y] = num
+				num+= 1
+				if num&gt;self.size*self.size-5:
+					finished = True
+					break
+			#left
+			for i in range(2*pass_num):
+				x -= 1
+				spiral[x,y] = num
+				num+= 1
+				if num&gt;self.size*self.size-5:
+					finished = True
+					break
+			pass_num += 1
+
+
+		return spiral
+</code></pre>
+
+<p>The above isn&rsquo;t exactly the fastest way of doing this (4 loops in a weird succession), but it worked nicely.</p>
+
+<p>Lets replace all our numbers with a binary prime or not prime designation</p>
+
+<pre><code class="language-python">
+	def replace_curve(self, array):
+		self.size = np.shape(array)
+		primes = self.prime(self.size[0]*self.size[1])
+		for i in range(0,self.size[0]):
+			for j in range(0, self.size[1]):
+				if primes[int(array[i,j])]:
+					array[i,j] = 1
+				else:
+					array[i,j] = 0
+		return array
+</code></pre>
+
+<p>And lets see if it works</p>
+
+<pre><code class="language-python">
+	def show(self):
+		width = self.size
+		height = self.size
+		self.spiral = self.make_curve()
+		self.spiral = self.replace_curve(self.spiral)	
+		plt.imshow(self.spiral, cmap = cm.Greys_r)
+		plt.show()
+
+a = Ulam(size=200)
+a.show()
+</code></pre>
+
+<p><figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="/img/spiral2.jpg" src="/img/low/spiral2.jpg" alt="Spiral" /></figure>
+<figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="/img/spiral3.jpg" src="/img/low/spiral3.jpg" alt="Spiral" /></figure>
+<figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="/img/spiral4.jpg" src="/img/low/spiral4.jpg" alt="Spiral" /></figure>
+<figure class="progressive"><img class="progressive__img progressive--not-loaded" data-progressive="/img/Spiral5.jpg" src="/img/low/Spiral5.jpg" alt="Spiral" /></p></figure>
+
+
+                <br>
+            </div>
+            
+            <div class="share">
+                <a href="" class="ssk ssk-facebook"></a>
+                <a href="" class="ssk ssk-twitter"></a>
+                <a href="" class="ssk ssk-google-plus"></a>
+                <a href="" class="ssk ssk-linkedin"></a>
+            </div>
+            
+            
+                <div class="navigation">
+                    
+                    <div>
+                        <img class="icon" src="/img/back.svg" alt="back" />
+                        <a href="/blog/marking-a-markov-chain-speech-predictor/">Marking A Markov Chain Speech Predictor</a>
+                    </div>
+                    
+                    <div style="width: 100%;"></div>
+                    
+                    <div>
+                        <a href="/blog/classifying-311-noise-complaint-data---part-ii/">Classifying 311 Noise Complaint Data - Part II</a>
+                        <img class="icon" src="/img/next.svg" alt="next" />
+                    </div>
+                    
+                </div>
+            
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
         </div>
     </div>
 </div>
+
 <div class="footer column">
     <div class="container">
 

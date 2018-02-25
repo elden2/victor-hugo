@@ -2,7 +2,6 @@
 <html lang="en-US">
 
 <head>
-	<meta name="generator" content="Hugo 0.36.1" />
 <meta charset="utf-8">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,24 +13,24 @@
 <meta property="og:site_name" content="Learning Data Science from The Ground Up" />
 <meta property="og:locale" content="nn_NO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/" />
-<meta property="og:title" content="Learning Data Science from The Ground Up" />
-<meta property="twitter:title" content="Learning Data Science from The Ground Up">
+<meta property="og:url" content="/blog/classifying-311-noise-complaint-data---part-i./" />
+<meta property="og:title" content="Classifying 311 Noise Complaint Data - Part I." />
+<meta property="twitter:title" content="Classifying 311 Noise Complaint Data - Part I.">
 
     <meta property="og:image" content="/img/banner.png">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:image" content="/img/banner.png">
 
-<meta property="og:description" content="Learning Data Sceince and Computer Science from scratch">
-<meta property="twitter:description" content="Learning Data Sceince and Computer Science from scratch">
+<meta property="og:description" content="">
+<meta property="twitter:description" content="">
 
 <title>
 
 
-    Learning Data Science from The Ground Up
+     Learning Data Science from The Ground Up - Classifying 311 Noise Complaint Data - Part I. 
 
 </title>
-<link rel="canonical" href="/">
+<link rel="canonical" href="/blog/classifying-311-noise-complaint-data---part-i./">
 
 
 <style media="screen">
@@ -1055,8 +1054,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Learning Data Science from The Ground Up" />
-
 
 </head>
 
@@ -1064,7 +1061,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         <a href="/"><img class="logo" src="/img/logo.png" alt="logo" /></a>
@@ -1095,68 +1092,341 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
     </div>
 </div>
 
-<div class="main column">
+
+<div class="main post non-narrow zero-top-spacing column">
     <div class="container">
         <div class="content">
-            
-                <div class="markdown">
-                <p>Welcome to computer science from a novice.</p>
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
 
-<p>My name is Zach, and I&rsquo;m a math and physics teacher out in California.  I&rsquo;ve been learning a bit of data science and computer science for fun lately.  Follow my progress as I play around with algorithms, cleaning data, general programming, machine learning, and whatever else I find myself stumbling into.</p>
+    Classifying 311 Noise Complaint Data - Part I.
 
-<p>There&rsquo;s no specific path or order to my projects.  They range from Kaggle competitions, to building very simple ML libraries, to <a href="http://www.projecteuler.net">http://www.projecteuler.net</a> problems.  Really just a random assortment.  All comments, suggestions, hints, and general thoughts are encourgaged.</p>
+</div>
 
                 </div>
-            
-
-            
-                <div class="posts">
-                
-                
-                    <div class="page-heading">Latest posts</div>
-                    <ul>
+                <div class="meta">
+                    <div class="date" title="Wed Feb 21 2018 00:00:00 UTC">Feb 21, 2018</div>
                     
-                        <li class="groupby">Feb, 2018</li>
                         
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/making-a-ulam-spiral/"><span>Making a Ulam Spiral</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/classifying-311-noise-complaint-data---part-ii/"><span>Classifying 311 Noise Complaint Data - Part II</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 21, 2018</span>
-    <a href="/blog/classifying-311-noise-complaint-data---part-i./"><span>Classifying 311 Noise Complaint Data - Part I.</span></a>
-</li>
-
-                        
-                            <li class="post-item">
-    <span class="meta">Feb 20, 2018</span>
-    <a href="/blog/marking-a-markov-chain-speech-predictor/"><span>Marking A Markov Chain Speech Predictor</span></a>
-</li>
-
+                        <div class="author middot" title="Zachary S">Zachary S</div>
                         
                     
-                    </ul>
-
-                    
-                
+                    <div class="reading-time middot">6 minute read</div>
+                    <div class="tags">
+                        <ul>
+                          
+                        </ul>
+                    </div>
+                    <div class="tags">
+                        <ul>
+                          
+                          
+                        </ul>
+                    </div>
                 </div>
-            
-
-            <div class="best-posts">
-            
-            
             </div>
+            <div class="markdown">
+                
+    
+    <p><em>Page 1 of 2 - Cleaning the Data</em></p>
+
+<p><em>Create a model that can classify a noise complaint by type (i.e., commercial, vehicle, park, house of worship, etc.)  The idea came from a friend, who I believe encountered it at a job interview at a now defunct company.</em></p>
+
+<p>You can find the entire code and the smaller data set here: <a href="https://github.com/zswarth/311Data">311 Data</a></p>
+
+<p>After playing around with Kaggle Competitions (if you&rsquo;ve not see these, <a href="https://www.kaggle.com/c/titanic-survival">Predicting Survival on the Titanic</a> is a great place to start, with tons of tutorials), I decided to look for data somewhere less structured.</p>
+
+<p>NYC Open Data gives access to huge amounts of information from complaints made to 311.  You can find the full data set here:
+<a href="https://nycopendata.socrata.com/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">311 Data</a>.</p>
+
+<p>I&rsquo;m going to be looking just a the noise complain data, which we can find here:
+<a href="https://data.cityofnewyork.us/Social-Services/2012-NYC-Noise-Complaints/w58m-6tbm">311 Noise Complains</a></p>
+
+<p>Let&rsquo;s start looking at the data:</p>
+
+<p>The original file is quite large; I can come back to it later, but for now I just want to play around with a few thousand lines.  I&rsquo;ve created a csv of the file with only the first 100,000 lines.  This is plenty for the time being.</p>
+
+<p>​</p>
+
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+import re
+from sklearn.model_selection import train_test_split
+</code></pre>
+
+<pre><code class="language-python">data = pd.read_csv('small_data.csv')
+</code></pre>
+
+<pre><code class="language-python">list(data.columns.values)
+</code></pre>
+
+<pre><code>['Unnamed: 0',
+ 'Unnamed: 0.1',
+ 'Unique Key',
+ 'Created Date',
+ 'Closed Date',
+ 'Agency',
+ 'Agency Name',
+ 'Complaint Type',
+ 'Descriptor',
+ 'Location Type',
+ 'Incident Zip',
+ 'Incident Address',
+ 'Street Name',
+ 'Cross Street 1',
+ 'Cross Street 2',
+ 'Intersection Street 1',
+ 'Intersection Street 2',
+ 'Address Type',
+ 'City',
+ 'Landmark',
+ 'Facility Type',
+ 'Status',
+ 'Due Date',
+ 'Resolution Action Updated Date',
+ 'Community Board',
+ 'Borough',
+ 'X Coordinate (State Plane)',
+ 'Y Coordinate (State Plane)',
+ 'Park Facility Name',
+ 'Park Borough',
+ 'School Name',
+ 'School Number',
+ 'School Region',
+ 'School Code',
+ 'School Phone Number',
+ 'School Address',
+ 'School City',
+ 'School State',
+ 'School Zip',
+ 'School Not Found',
+ 'School or Citywide Complaint',
+ 'Vehicle Type',
+ 'Taxi Company Borough',
+ 'Taxi Pick Up Location',
+ 'Bridge Highway Name',
+ 'Bridge Highway Direction',
+ 'Road Ramp',
+ 'Bridge Highway Segment',
+ 'Garage Lot Name',
+ 'Ferry Direction',
+ 'Ferry Terminal Name',
+ 'Latitude',
+ 'Longitude',
+ 'Location']
+</code></pre>
+
+<p> </p>
+
+<p>We can clearly see we have a ton of variables here, but most of them are pretty useless.   I deleted any column that either had no values, or hugely overlapping values.  For example, &lsquo;Agency Name&rsquo; and &lsquo;Agency&rsquo; contain the same information.  &ldquo;School Name&rdquo; is an empty column.   Unique Key is unique for each one, so I assume will not give a huge amount of useful information (perhaps I&rsquo;m wrong there though).</p>
+
+<p>​​</p>
+
+<pre><code class="language-python">dropped_fields = ['Unique Key','Agency Name','Park Facility Name','School Name','School Number','School Code','School Phone Number','School Address','School City','School State','School Zip','School Region','School Not Found','School or Citywide Complaint','Vehicle Type','Taxi Company Borough','Taxi Pick Up Location','Bridge Highway Name','Bridge Highway Direction','Road Ramp','Bridge Highway Segment','Garage Lot Name','Ferry Direction','Ferry Terminal Name','Latitude','Longitude','Location']
+data.drop(dropped_fields, axis=1, inplace = True)
+</code></pre>
+
+<p>​
+The rest of the data I wanted to clean up a bit before I ran anything.</p>
+
+<p>For the date, I creased a column for Day of the Week, Year, and Month.  I&rsquo;m guessing the day of the week and month may have some predictive properties, but the date it&rsquo;s current form would be hard to work with. </p>
+
+<p>​</p>
+
+<pre><code class="language-python">import datetime
+def date(d):
+	month, day, year = (int(x) for x in d.split('/'))
+	return datetime.date(year,month, day).weekday()
+
+def month(d):
+	month, day, year = (int(x) for x in d.split('/'))
+	return month
+
+def year(d):
+	month, day, year = (int(x) for x in d.split('/'))
+	return year
+
+
+
+data['Weekday'] = data['Created Date'].apply(date)
+data['Year'] = data['Created Date'].apply(year)
+data['Month'] = data['Created Date'].apply(month)
+
+</code></pre>
+
+<p>Depending on what model I choose to run on these, I also need to find a way to deal with the categorical data as well as the non ordered data.
+For the data, perhaps I could have dealt with the months as one numerical column (as the order does matter) as opposed to 12 categories (same with days of the week), but i decided to split them up anyway.</p>
+
+<p>I created dummy variables for Day, Month, Year, and Agency.</p>
+
+<pre><code class="language-python">​dummies = pd.get_dummies(data['Month'])
+for m_number in dummies.columns:
+	data['month_%s' % m_number] = dummies[m_number]
+
+dummies = pd.get_dummies(data['Year'])
+for m_number in dummies.columns:
+	data['Year_%s' % m_number] = dummies[m_number]
+
+dummies = pd.get_dummies(data['Weekday'])
+for m_number in dummies.columns:
+	data['Weekday_%s' % m_number] = dummies[m_number]
+
+data = data.drop('Created Date', axis = 1)
+data = data.drop('Weekday', axis = 1)
+data = data.drop('Year', axis = 1)
+data = data.drop('Month', axis = 1)
+
+</code></pre>
+
+<p> 
+There were a ton of zip codes.  I grouped them together in groups of 10, and labeled all the unlabeled ones with their own zip code.</p>
+
+<p>For the Street name, i divided each section into &ldquo;Other&rdquo;, &ldquo;Avenue&rdquo;, &ldquo;Street&rdquo;, &ldquo;Broadway&rdquo;, &ldquo;Road&rdquo;.  If you know NYC, different street names give some indication into whether we&rsquo;re looking at a residential or commercial region, or what part of the city we&rsquo;re in (i.e., Road isn&rsquo;t very common in Manhattan.)</p>
+
+<pre><code class="language-python">
+dummies = pd.get_dummies(data['Agency'])
+for agent in dummies.columns:
+	data['agency_%s' % agent] = dummies[agent]
+
+
+# Group Zip Codes in nearest 10
+def zip(x):
+	if np.isnan(x):
+		return 10000
+	else:
+		return x//10
+	return x//10
+
+data['Incident Zip'] = data['Incident Zip'].apply(zip)
+
+dummies = pd.get_dummies(data['Incident Zip'])
+for a in dummies.columns:
+	data['zip_%s' % a] = dummies[a]
+
+data = data.drop('Incident Zip', axis = 1)
+
+</code></pre>
+
+<p>If we look at the city data, it&rsquo;s interesting.  4 of the 5 boroughs were generally labeled.  however, Queens was chopped up very finely amongst different neighborhoods.  I&rsquo;m sure there a decent about of predictive values here, but I din&rsquo;t want to make my model too specific, so I generalized all non New York, Brooklyn, Bronx, and Staten Island lables as &ldquo;Rare&rsquo;.
+​</p>
+
+<pre><code class="language-python">
+#Make City into a few key bigger sections
+def C_name(name):
+	cities = ['NEW YORK', 'BROOKLYN','BRONX', 'STATEN ISLAND']
+	if name not in cities:
+		return 'RARE'
+	else:
+		return name
+
+data['City'] = data['City'].apply(C_name)
+
+
+dummies = pd.get_dummies(data['City'])
+for a in dummies.columns:
+	data['City_%s' % a] = dummies[a]
+
+
+data = data.drop('City', axis = 1)
+
+</code></pre>
+
+<p>I got rid of a few last data points I didn&rsquo;t use (there are things here I may come back to later, but for now I just want something simple I can play with and improve upon).  For example, community board is probably important, and I&rsquo;d like to go add this in later.  I also just changed the landmark data into a binary value.</p>
+
+<pre><code class="language-python">
+def land(x):
+	if type(x) == str:
+		return 1
+	else:
+		return 0
+
+
+data['Landmark'] = data['Landmark'].apply(land)
+
+
+#Facility Types
+
+dummies = pd.get_dummies(data['Facility Type'])
+for a in dummies.columns:
+	data['Facility_%s' % a] = dummies[a]
+
+
+data = data.drop('Facility Type', axis = 1)
+</code></pre>
+
+<pre><code class="language-python">#Status
+dummies = pd.get_dummies(data['Status'])
+for a in dummies.columns:
+	data['Status_%s' % a] = dummies[a]
+
+data = data.drop('Status', axis = 1)
+
+data = data.drop('Community Board', axis=1)
+
+##address type
+dummies = pd.get_dummies(data['Address Type'])
+for a in dummies.columns:
+	data['CommunityBoard_%s' % a] = dummies[a]
+
+data = data.drop('Address Type', axis = 1)
+</code></pre>
+
+<pre><code class="language-python">
+#Location Type
+dummies = pd.get_dummies(data['Location Type'])
+for a in dummies.columns:
+	data['AddressType_%s' % a] = dummies[a]
+
+data = data.drop('Location Type', axis = 1)
+
+
+drop = ['Incident Address', 'Descriptor', 'Closed Date', 'Cross Street 1', 'Cross Street 2','Intersection Street 1', 'Intersection Street 2', 'Due Date', 'Resolution Action Updated Date', 'X Coordinate (State Plane)', 'Y Coordinate (State Plane)', 'Park Borough'] 
+data.drop(drop, axis=1, inplace = True)
+</code></pre>
+
+<pre><code class="language-python">#Just O.H.A. Borough
+dummies = pd.get_dummies(data['Borough'])
+for a in dummies.columns:
+	data['Borough_%s' % a] = dummies[a]
+
+data = data.drop('Borough', axis = 1)
+</code></pre>
+
+<p>We now have a dataset we can begin to look at.</p>
+
+
+                <br>
+            </div>
+            
+            <div class="share">
+                <a href="" class="ssk ssk-facebook"></a>
+                <a href="" class="ssk ssk-twitter"></a>
+                <a href="" class="ssk ssk-google-plus"></a>
+                <a href="" class="ssk ssk-linkedin"></a>
+            </div>
+            
+            
+                <div class="navigation">
+                    
+                    <div>
+                        <img class="icon" src="/img/back.svg" alt="back" />
+                        <a href="/blog/classifying-311-noise-complaint-data---part-ii/">Classifying 311 Noise Complaint Data - Part II</a>
+                    </div>
+                    
+                    <div style="width: 100%;"></div>
+                    
+                </div>
+            
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
         </div>
     </div>
 </div>
+
 <div class="footer column">
     <div class="container">
 

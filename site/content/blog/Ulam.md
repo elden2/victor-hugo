@@ -4,6 +4,10 @@ date: 2018-02-21
 title: Making a Ulam Spiral
 ---
 
+*Ulam Spirals*
+
+![Spiral](/img/Spiral1.50.jpg)
+
 I remember coming across [Ulam Spirals](https://en.wikipedia.org/wiki/Ulam_spiral) (also known as Prime Spirals) a few years back, and though they were fascinating.  
 
 Stanislaw Ulam (of the Teller-Ulam Hydrogen Bomb) discovered these while doodling in a conference (and I find myself doodling the same spiral when I'm board in meetings as well.)
@@ -14,8 +18,8 @@ It's quite simple to understand the process, almost impossible to understand the
 Take a series of integers and arrange them in an square lattice spiraling outward.  Color in all the prime (or not prime, whichever you would like) numbers, and you'll find that the primes lie on long diagonals.
 
 
-![Integrer Spiral from Wiki](/img/Ulam.200.jpg)
-![Integrer Spiral from Wiki2](/img/Ulam2.200.jpg)
+![Integrer Spiral from Wiki](/img/Ulam.50.jpg)
+
 
 Doing this up to 100 is easy enough by hand, but a little python code, and we can see this pattern holds true for quite a while.
 
@@ -150,7 +154,6 @@ a = Ulam(size=200)
 a.show()
 ```
 
-![Spiral](/img/Spiral1.jpg)
 ![Spiral](/img/spiral2.jpg)
 ![Spiral](/img/spiral3.jpg)
 ![Spiral](/img/spiral4.jpg)
