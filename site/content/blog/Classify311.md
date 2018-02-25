@@ -2,6 +2,10 @@
 author: "Zachary S"
 date: 2018-02-21
 title: Classifying 311 Noise Complaint Data - Part I.
+keywords:
+  - 311 Noise Complaint Data
+  - Classification
+  - Python
 ---
 
 *Page 1 of 2 - Cleaning the Data*
