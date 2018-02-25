@@ -2,6 +2,10 @@
 author: "Zachary S"
 date: 2018-02-21
 title: Classifying 311 Noise Complaint Data - Part II
+keywords:
+  - Data Science
+  - 311 Data
+  - Decision Tree Classifier
 ---
 
 

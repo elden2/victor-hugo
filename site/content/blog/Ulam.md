@@ -10,6 +10,7 @@ keywords:
 ---
 
 *Ulam Spirals*
+
 Creating a program to plot Ulam Spirals for any dimension.
 
 ![Spiral](/img/Spiral1.jpg)
@@ -162,3 +163,8 @@ a.show()
 
 ![Spiral](/img/spiral2.jpg)
 ![Spiral](/img/Spiral5.jpg)
+
+
+Doesn't look half bad.  And runs pretty fast as well.
+
+A second fun step would now be to alter the code to either start from different numbers (instead of starting from 1 in the center), or change the shape to see what happens.
