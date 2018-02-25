@@ -2,7 +2,6 @@
 author: "Zachary S"
 date: 2018-02-21
 title: K-Means.
-notebook = true
 ---
 
 
