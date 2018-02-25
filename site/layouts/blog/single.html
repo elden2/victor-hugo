@@ -8,6 +8,9 @@
                     {{ partial "page-heading" . }}
                 </div>
                 <div class="meta">
+                    {{ if .Params.notebook }}
+                    <link href="{{ $.Site.BaseURL }}css/jupyter.css" rel="stylesheet" type="text/css">
+                        {{ end }}
                     <div class="date" title="{{ .Date.Format .Site.Params.dateformfull }}">{{ .Date.Format .Site.Params.dateform }}</div>
                     {{ if not .Params.noauthor }}
                         {{ if .Params.author }}
