@@ -6,7 +6,7 @@ title: Making a Ulam Spiral
 
 *Ulam Spirals*
 
-![Spiral](/img/Spiral1.50.jpg)
+![Spiral](/img/Spiral1.jpg)
 
 I remember coming across [Ulam Spirals](https://en.wikipedia.org/wiki/Ulam_spiral) (also known as Prime Spirals) a few years back, and though they were fascinating.  
 
