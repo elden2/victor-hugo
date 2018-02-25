@@ -18,6 +18,7 @@ pluralizelisttitles = false
 blog = "blog/:slug/"
 
 [params]
+disqusShortname = "zswarth"
 dateform = "Jan 2, 2006"
 dateformfull = "Mon Jan 2 2006 15:04:05 MST"
 description = "Learning Data Sceince and Computer Science from scratch"
