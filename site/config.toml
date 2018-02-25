@@ -39,7 +39,7 @@ posts_navigation = true
 # issoHost = "comments.domain.tld:1234"
 # githubRepo = "githubUsername/repositoryName"
 small_banner_logo = false
-googleAnalytics = 'UA-114584643-1"
+
 
 [params.colors]
 identifier = "#527fc1f"
