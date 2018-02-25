@@ -14,8 +14,8 @@ It's quite simple to understand the process, almost impossible to understand the
 Take a series of integers and arrange them in an square lattice spiraling outward.  Color in all the prime (or not prime, whichever you would like) numbers, and you'll find that the primes lie on long diagonals.
 
 
-![Integrer Spiral from Wiki](/static/Ulam.png)
-![Integrer Spiral from Wiki2](/static/Ulam2.png)
+![Integrer Spiral from Wiki](/igm/Ulam.png)
+![Integrer Spiral from Wiki2](/img/Ulam2.png)
 
 Doing this up to 100 is easy enough by hand, but a little python code, and we can see this pattern holds true for quite a while.
 
@@ -150,9 +150,9 @@ a = Ulam(size=200)
 a.show()
 ```
 
-![Spiral](/static/img/Spiral1.png)
-![Spiral](/static/img/Spiral2.png)
-![Spiral](/static/img/Spiral3.png)
+![Spiral](/img/Spiral1.png)
+![Spiral](/img/Spiral2.png)
+![Spiral](/img/Spiral3.png)
 ![Spiral](/static/img/Spiral4.png)
 ![Spiral](/static/img/Spiral5.png)
 ![Spiral](/static/img/Spiral6.png)
