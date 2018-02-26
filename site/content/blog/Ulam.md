@@ -1,6 +1,6 @@
 ---
-author: "Zachary S"
-date: 2018-02-21
+author: "Zachary Swarth"
+date: 2018-02-24
 title: Making a Ulam Spiral
 keywords:
   - Ulam Spiral

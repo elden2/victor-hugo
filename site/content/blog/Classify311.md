@@ -1,5 +1,5 @@
 ---
-author: "Zachary S"
+author: "Zachary Swarth"
 date: 2018-02-21
 title: Classifying 311 Noise Complaint Data - Part I.
 keywords:

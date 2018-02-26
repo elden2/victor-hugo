@@ -1,14 +1,17 @@
 +++
-date = "2015-08-22" 
+date = "2018-02-22" 
 title = "About" 
+
 +++
 
-I’ve recently begun learning a bit about data science, machine learning, and general computer science for fun.   Most of the computer science websites out there are written by experts (or at least people with some degree of expertise).  I'm a high school math and physics teacher, not a data scientist; I’m hoping this will be an opportunity to show a bit of the progression of a beginner and hobbyist.  With any luck, it will be useful or interesting to others who are just beginning out as well.  Comments, suggestions, advice, and questions are all welcome.
+Welcome to computer science from a novice.
 
-Almost everything here will be written in Python, which is the language I began writing in a few years ago.  (I started learning python in order to solve <http://www.projecteuler.net> problems, my version of sudoku or crossword puzzles.  If you've never tried them, they're a ton of fun - but a bit addicting).
+My name is Zach, and I'm a math and physics teacher out in California.  Once upon a time I was a mechanical engineer, so it's in my nature to build and tinker with things. Lately I've been learning a bit about programming, computer science, and data science.  All the pages here are the work of a novice playing around with algorithms, cleaning data, general programming, machine learning, and whatever else I find myself stumbling into.
 
-​I've just started to post some of my code on GitHub:
-​
-<http://www.github.com/elden2>
+There's no specific path or order to these projects.  They inlucde simple ML libraries I've built, Kaggle competitions, <http://www.projecteuler.net> problems, and demonstrations or explanations I built for my students. Really just a random assortment of things.  I value figuring out how things work, and the best way to figure out how something works is to build it.
 
+I’m hoping this will be an opportunity to show a bit of my progression.  With any luck, it will be useful or interesting to others who are just beginning out as well.
 
+All comments, suggestions, hints, and general thoughts are encouraged.
+
+​Most of the code on this site is up on [GitHub](http://www.github.com/zswarth)
