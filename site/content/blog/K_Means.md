@@ -64,3 +64,8 @@ Our old and new photo:
 
 ![K-Means Image](/img/KMeans.png)
 
+In 4 colors instead of 6:
+
+
+![K-Means Image](/img/KM2.png)
+
