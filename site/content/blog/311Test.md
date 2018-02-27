@@ -83,7 +83,7 @@ decision_tree.fit(X_train, y_train)
 ```
 
 
-Decision tree's tend to overfit data with lots of samples; we're going to need to look out for this.  ((I'm gong to build of a decision tree library from scratch and put a blog post about it soon.)
+Decision tree's tend to overfit data with lots of samples; we're going to need to look out for this.  (I'm gong to build of a decision tree library from scratch and put a blog post about it soon.)
 
 Our data has quite a few attributes - so lets get the accuracy, but then look at what it's classifying well, and what it's classifying poorly.
 
@@ -162,7 +162,7 @@ import matplotlib.pyplot as plt
 plt.bar(xrange(len(CP.keys())),CP.values())
 ```
 
-![png](output_14_1.png)
+![chart](output_14_1.png)
 
 
 

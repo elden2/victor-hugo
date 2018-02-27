@@ -15,17 +15,17 @@ Creating a program to plot Ulam Spirals for any dimension.
 
 ![Spiral](/img/Spiral1.jpg)
 
-I remember coming across [Ulam Spirals](https://en.wikipedia.org/wiki/Ulam_spiral) (also known as Prime Spirals) a few years back, and though they were fascinating.  
+I remember coming across [Ulam Spirals](https://en.wikipedia.org/wiki/Ulam_spiral) (also known as Prime Spirals) a few years back, and thought they were fascinating.  
 
 Stanislaw Ulam (of the Teller-Ulam Hydrogen Bomb) discovered these while doodling in a conference (and I find myself doodling the same spiral when I'm board in meetings as well.)
 
 It's quite simple to understand the process, almost impossible to understand the why, and a fun little project to implement in python; all in all a perfect afternoon project.
 
 
-Take a series of integers and arrange them in an square lattice spiraling outward.  Color in all the prime (or not prime, whichever you would like) numbers, and you'll find that the primes lie on long diagonals.
+Take a series of integers and arrange them in a square lattice spiraling outward.  Color in all the prime (or not prime, whichever you would like) numbers, and you'll find that the primes lie on long diagonals.
 
 
-![Integrer Spiral from Wiki](/img/Ulam.jpg)
+![Integer Spiral from Wiki](/img/Ulam.jpg)
 
 
 Doing this up to 100 is easy enough by hand, but a little python code, and we can see this pattern holds true for quite a while.
