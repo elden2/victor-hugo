@@ -9,12 +9,12 @@ publishdir = "public"
 author = "Zachary Swarth"
 title = "Learning Computer Science from the Ground Up"
 pluralizelisttitles = false
+disqusshortname = "zswarth"
 
 [permalinks]
 blog = "blog/:slug/"
 
 [params]
-disqusshortname = "zswarth"
 dateform = "Jan 2, 2006"
 dateformfull = "Mon Jan 2 2006 15:04:05 MST"
 description = "Learning Computer Science from the Ground Up"

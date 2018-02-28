@@ -8,7 +8,7 @@
         {{ end }}
 
         <div class="copyright">
-
+    {{ partial "disqus.html" . }}
         {{ if .Site.Params.copyright }}
             {{ if .Site.Params.copyrightUrl }}
                 <a href="{{ .Site.Params.copyrightUrl }}">{{ .Site.Params.copyright }}</a>
@@ -16,7 +16,6 @@
                 <a href="{{ .Site.BaseURL }}license">{{ .Site.Params.copyright }}</a>
             {{ end }}
         {{ end }}
-    {{ partial "disqus.html" . }}
         </div>
         <div class="icons">
 
