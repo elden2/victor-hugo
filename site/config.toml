@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://www.zswarth.com/"
 theme = "cocoa-eh"
 builddrafts = true
 canonifyurls = true
@@ -6,22 +6,18 @@ contentdir = "content"
 languageCode = "en-US"
 layoutdir = "layouts"
 publishdir = "public"
-notebook = true
-author = "Zachary S"
-title = "Learning Data Science from The Ground Up"
-disqusshortname = ""
+author = "Zachary Swarth"
+title = "Learning Computer Science from the Ground Up"
+disqusshortname = "zswarth"
 pluralizelisttitles = false
-
-
 
 [permalinks]
 blog = "blog/:slug/"
 
 [params]
-disqusShortname = "zswarth"
 dateform = "Jan 2, 2006"
 dateformfull = "Mon Jan 2 2006 15:04:05 MST"
-description = "Learning Data Sceince and Computer Science from scratch"
+description = "Learning Computer Science from the Ground Up"
 copyright = "Copyright © 2015 Nishanth Shanmugham"
 # copyrightUrl = "https://creativecommons.org/licenses/by-sa/4.0/"
 logofile = "img/logo.png"
@@ -29,19 +25,18 @@ faviconfile = "img/logo.png"
 highlightjs = true
 progressively = true
 share = true
-latestpostcount = 10
+latestpostcount = 5
 github = "zswarth"
 email = "zachary.swarth@gmail.com"
-linkedin = "zachary-swarth-4bb15033/"
+linkedin = "zachary-swarth-4bb15033"
 #twitter = "example"
 #facebook = "facebook_id"
 social_banner = "img/banner.png"
-#usesmallsummarycard = true
+usesmallsummarycard = true
 posts_navigation = true
 # issoHost = "comments.domain.tld:1234"
 # githubRepo = "githubUsername/repositoryName"
 small_banner_logo = false
-
 
 [params.colors]
 identifier = "#527fc1f"

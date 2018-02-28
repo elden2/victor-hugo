@@ -1,92 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Learning Data Science from The Ground Up</title>
-    <link>/</link>
-    <description>Recent content on Learning Data Science from The Ground Up</description>
+    <title>My New Hugo Site</title>
+    <link>http://example.org/</link>
+    <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
-    <lastBuildDate>Wed, 21 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <language>en-us</language>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Classifying 311 Noise Complaint Data - Part I.</title>
-      <link>/blog/classifying-311-noise-complaint-data---part-i./</link>
-      <pubDate>Wed, 21 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/classifying-311-noise-complaint-data---part-i./</guid>
-      <description>Page 1 of 2 - Cleaning the Data
-Create a model that can classify a noise complaint by type (i.e., commercial, vehicle, park, house of worship, etc.) The idea came from a friend, who I believe encountered it at a job interview at a now defunct company.
-You can find the entire code and the smaller data set here: 311 Data
-After playing around with Kaggle Competitions (if you&amp;rsquo;ve not see these, Predicting Survival on the Titanic is a great place to start, with tons of tutorials), I decided to look for data somewhere less structured.</description>
-    </item>
-    
-    <item>
-      <title>Classifying 311 Noise Complaint Data - Part II</title>
-      <link>/blog/classifying-311-noise-complaint-data---part-ii/</link>
-      <pubDate>Wed, 21 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/classifying-311-noise-complaint-data---part-ii/</guid>
-      <description>This was a pretty failed attempt. I got decent results, but for pretty aweful reasons that I should have seen at the very beginning
-The following code comes from a Jupyter notebook. Next project is to figure out a way to import that notebook directly into this website.
-First, lets grab our data and run a few classifiers just to see around where were at. I&amp;rsquo;m just using out of the box SciKit learn libraries instead of writting my own for this.</description>
-    </item>
-    
-    <item>
-      <title>Making a Ulam Spiral</title>
-      <link>/blog/making-a-ulam-spiral/</link>
-      <pubDate>Wed, 21 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/making-a-ulam-spiral/</guid>
-      <description>Ulam Spirals
-I remember coming across Ulam Spirals (also known as Prime Spirals) a few years back, and though they were fascinating.
-Stanislaw Ulam (of the Teller-Ulam Hydrogen Bomb) discovered these while doodling in a conference (and I find myself doodling the same spiral when I&amp;rsquo;m board in meetings as well.)
-It&amp;rsquo;s quite simple to understand the process, almost impossible to understand the why, and a fun little project to implement in python; all in all a perfect afternoon project.</description>
-    </item>
-    
-    <item>
-      <title>Marking A Markov Chain Speech Predictor</title>
-      <link>/blog/marking-a-markov-chain-speech-predictor/</link>
-      <pubDate>Tue, 20 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/marking-a-markov-chain-speech-predictor/</guid>
-      <description>A program to write in the style of Moby Dick
-The idea of a Markov Chain is pretty simple. Imagine you were to hear the beginning of the sentence &amp;ldquo;The United States of&amp;hellip;..&amp;rdquo; and you needed to fill in the rest. Chances are, at least if you are from San Francisco in 2018, you would assume &amp;ldquo;America&amp;rdquo; is the next word (as opposed to &amp;ldquo;The United States of Brazil,&amp;rdquo; (which was Brazil&amp;rsquo;s official name half a century ago).</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Sat, 22 Aug 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>I’ve recently begun learning a bit about data science, machine learning, and general computer science for fun. Most of the computer science websites out there are written by experts (or at least people with some degree of expertise). I&amp;rsquo;m a high school math and physics teacher, not a data scientist; I’m hoping this will be an opportunity to show a bit of the progression of a beginner and hobbyist. With any luck, it will be useful or interesting to others who are just beginning out as well.</description>
-    </item>
-    
-    <item>
-      <title>Home</title>
-      <link>/home/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/home/</guid>
-      <description>Welcome to computer science from a novice.
-My name is Zach, and I&amp;rsquo;m a math and physics teacher out in California. I&amp;rsquo;ve been learning a bit of data science and computer science for fun lately. Follow my progress as I play around with algorithms, cleaning data, general programming, machine learning, and whatever else I find myself stumbling into.
-There&amp;rsquo;s no specific path or order to my projects. They range from Kaggle competitions, to building very simple ML libraries, to http://www.</description>
-    </item>
-    
-    <item>
-      <title>License</title>
-      <link>/license/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/license/</guid>
-      <description>You can use this page to put a license on the contents of your blog, like so:
- The MIT License (MIT)
-Copyright &amp;copy; 2015 Nishanth Shanmughamnishanth.gerrard@gmail.com
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &amp;ldquo;Software&amp;rdquo;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</description>
-    </item>
     
   </channel>
 </rss>
