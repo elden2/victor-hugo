@@ -8,7 +8,7 @@ layoutdir = "layouts"
 publishdir = "public"
 author = "Alexis Tacnet"
 title = "Cocoa Enhanced"
-disqusshortname = ""
+disqusshortname = "zswarth"
 pluralizelisttitles = false
 
 [permalinks]
