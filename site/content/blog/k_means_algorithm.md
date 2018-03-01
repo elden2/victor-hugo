@@ -133,13 +133,12 @@ def final_algorithm(data, n_clusters = 2, iter = 3):
 
 Our centroids have moved closer to the centers of our data.
 
-Lets repeat.
 ![Final Result](/img/perfect.png)
 
 This is exactly what the actual labeled data should look like.  So our clustering yielded  pretty good results.
 
 
-Here in full:
+Here is an example of the process in full:
 
 
 
