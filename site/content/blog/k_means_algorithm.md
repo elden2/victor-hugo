@@ -131,8 +131,6 @@ def final_algorithm(data, n_clusters = 2, iter = 3):
 ```		
 
 
-![Iris Cluster](/img/new_iris_cluster.png)
-
 Our centroids have moved closer to the centers of our data.
 
 Lets repeat.
