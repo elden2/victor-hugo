@@ -31,12 +31,12 @@ iris_labels = iris[1:,4]
 ```
 The iris data set is a series of 3 iris flowers (Setosa, Versicolor, and Virginica), with data given for Sepal Length, Sepal Width, Petal Length, and Petal Width.
 
-Clustering is notoriously difficult with the 3rd flower, so we're only going to look at Setosa and Versicolor in this project.
+Clustering is notoriously difficult with the 3rd flower, so lets only look at Setosa and Versicolor in this project.
 
 
 ![Iris Data](/img/Iris.png)
 
-We're only looking at the first two dimensions  here, but we can see that there are two groups of data.  We have labels for this data, but since k-means is an unsupervised algorithm, we're going to ignore those labels until the end to see how well clustering works here.
+This is only the first two dimensions, but we can see that there are two groups of data.  We have labels, but since k-means is an unsupervised algorithm, we're going to ignore those labels until the end to see how well clustering works.
 
 
 Firstly, we need to write a function to find the Euclidian distance between any two points.
