@@ -13,12 +13,13 @@ keywords:
 
 This was just a test to see what would come out; my attempt was to make something that looked like the [Obama Hope](https://en.wikipedia.org/wiki/Barack_Obama_%22Hope%22_poster) poster by Shepard Fairey.
 
-The K-Means algorithm is a fun little tool which seperates data into a number of piles based on the Euclidean distance of the data to a point
+The K-Means algorithm is a fun little tool which seperates data into a number of piles based on the Euclidean distance of the data to a point.
+
+See [post](/blog/writing-the-k-means-algorithm-from-scratch/) for more detail on how it works.
 
 
 ```python
 
-get_ipython().magic(u'matplotlib inline')
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.image as mpimg
