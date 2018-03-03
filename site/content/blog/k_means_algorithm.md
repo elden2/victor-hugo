@@ -1,5 +1,5 @@
 ---
-author: "Zachary Swarth"
+author: "Zachary S"
 date: 2018-02-28
 title: Writing the K-Means Algorithm from Scratch
 keywords:

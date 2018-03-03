@@ -1,5 +1,5 @@
 ---
-author: "Zachary Swarth"
+author: "Zachary S"
 date: 2018-02-25
 title: Reducing Number of Colors in Photo using K-Means
 keywords:
