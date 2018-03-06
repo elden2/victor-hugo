@@ -1,7 +1,7 @@
 ---
 author: "Zachary S"
 date: 2018-03-01
-title: Creating a Perceptron Classifier for MNIST Dataset
+title: Creating a Perceptron Classifier for the MNIST Dataset
 keywords:
   - MNIST
   - Digit Classification
@@ -217,7 +217,7 @@ It doesn't look like 200 iterations is helping us all that much.  It's a bit sca
 Lets use .000007 learning rate and 200 iterations (it runs pretty fast as it is, so time isn't an issue) on test set and see our final accuracy.
 
 
-# 85.05% Accurate.  Not half bad.
+## 85.05% Accurate.  Not half bad.
 
 
 
