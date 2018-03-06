@@ -13,11 +13,13 @@ keywords:
 
 
 ![MNIST Dataset - From Quora](/img/mnist.png)
+
 The MNIST dataset is great little dataset to start exploring image recognition.  It's a series of 60,000 28 x 28 pixel images, each representing one of the digits between 0 and 9.
 
 We're going to try to classify handwritten digits using a single layer perceptron classifier.  This is by no means the most accurate way of doing this, but it gives us a very nice jumping off point to explore more complex methods (most notably, deeper neural networks), which I'll explore later.
 
-The data is easily found online, in a few forms.  I also have a modified version on github * INCERT LINK HERE * along with the code for this project.
+The data is easily found online, in a few forms.  I also have a modified version on [github.com/zswarth/MNIST-Classification](https://github.com/zswarth/MNIST-Classification) along with the code for this project.
+
 
 ```python
 import numpy as np
@@ -178,7 +180,7 @@ def one_all(data, weights):
 		return np.argmax(a)
 	return np.argmax(a, axis=1)
 ```
-Since our classifier is far from perfect, several different weights might predcit that a number belongs to that class.  For instance, a poorly drawn 3 might activate our perceptron from both 3 and 8.  In order to account for this, the last function will classify our numbers based on the weights that return the highest output.
+Since our classifier is far from perfect, several different weights might predict that a number belongs to that class.  For instance, a poorly drawn 3 might activate our perceptron from both 3 and 8.  In order to account for this, the last function will classify our numbers based on the weights that return the highest output.
 
 Since at this point our data is fairly symmetrical (it's almost perfectly divided into 10% for each number), we can just look at overall accuracy.
 
@@ -190,3 +192,35 @@ def test_all(data, labels, weights):
 	accuracy = np.sum(correct)/float(a)
 	return accuracy
 ```
+
+## Choosing Learnign Rate
+
+Lets graph the percentage of true positives we get on one number (in this case 3) for 20 iterations and see what different learning rates look like.
+
+![Alhpha = 1](/img/alpha10.png)
+
+Above is using Alpha = 1.  We can see that were all over the place.  Doesn't look like were getting better with each iteration.  Lets try something smaller
+
+
+![Alhpha = .001](/img/alpha_0p001.png)
+
+Alpha = .001 looks a little bit better.
+
+![Alhpha = .00001](/img/alphap00001_bumpy.png)
+
+Alpha = .00001 looks like something we can use, if a little bumpy.
+
+Anyting farther, and this is going to take forever to converge.  The only reason we start with 100% success rate is because we're classifying EVERYTHING as correct, which is of course useless.
+
+It looks like we're still gaining accuracy with more iteratins, so lets up the number of iterations up to 200, and see what we get.
+
+[200 Iterations](/img/alpha_200iter.png)
+
+Lets use .000007 learning rate and 200 iterations on test set and see our final accuracy.
+
+
+##85.05% Accurate.  Not half bad.
+
+
+
+
