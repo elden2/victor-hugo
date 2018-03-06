@@ -1,7 +1,7 @@
 ---
 author: "Zachary S"
 date: 2018-03-01
-title: Creating a Perceptron Classifier for MNIST Dataset from Scratch in Python
+title: Creating a Perceptron Classifier for MNIST Dataset
 keywords:
   - MNIST
   - Digit Classification
