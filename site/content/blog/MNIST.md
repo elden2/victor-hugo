@@ -206,11 +206,11 @@ Above is using Alpha = 1.  We can see that were all over the place.  Doesn't loo
 
 Alpha = .00001 looks like something we can use, if a little bumpy.
 
-Anyting farther, and this is going to take forever to converge.  The only reason we start with 100% success rate is because we're classifying EVERYTHING as correct, which is of course useless.
+Too much smaller, and this might take too long to converge.
 
-It looks like we're still gaining accuracy with more iteratins, so lets up the number of iterations up to 200, and see what we get.
+It looks like we're still gaining accuracy with more iteratins though, so lets up the number of iterations up to 200, and see what we get.
 
-[200 Iterations](/img/alpha_200iter.png)
+![200 Iterations](/img/alpha_200iter.png)
 
 Lets use .000007 learning rate and 200 iterations on test set and see our final accuracy.
 
