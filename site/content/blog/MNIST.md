@@ -9,10 +9,10 @@ keywords:
   - ML
 ---
 
-*Learn how to create a simple perceptron classifier is python to recognize handwritten digits in the MNIST dataset.*
+*Learning how to create a simple perceptron classifier is python to recognize handwritten digits in the MNIST dataset.*
 
 
-![MNIST Dataset](/img/mnist.png)
+![MNIST Dataset - From Quora](/img/mnist.png)
 The MNIST dataset is great little dataset to start exploring image recognition.  It's a series of 60,000 28 x 28 pixel images, each representing one of the digits between 0 and 9.
 
 We're going to try to classify handwritten digits using a single layer perceptron classifier.  This is by no means the most accurate way of doing this, but it gives us a very nice jumping off point to explore more complex methods (most notably, deeper neural networks), which I'll explore later.
@@ -81,6 +81,7 @@ def create_weights(data):
 	return weights
 
 weights = create_weights(X_train)
+```
 
 To write our feed forward prediction, we could write this as a loop, but it would be painfuly slow.  Numpy allows us to do this as a matrix multiplication, which will be far far faster.
 
@@ -102,10 +103,15 @@ def one_number(labels, number):
 
 Now comes actually training our neuron.
 The perceptron algorithm is fairly straightforward:
+
 1) For any individual  piece of data, determine if the weight correctly or incorrectly classify the data
+
 2) If it is correct, do nothing and move on to the next piece of data
+
 3) If the prediction is incorrect, rotate the plane of our classifier incrementally toward the correct answer.
+
 4) Repeat for all data points, and until we have a classifier which is acceptable enough.
+
 
 Alpha is our learning rate (the amount we are rotating our plane).  
 
@@ -149,7 +155,7 @@ Looks like we're doing pretty well here for a start.
 With just a few iterations and only a small subset of our data, we're classifying 73% of our positive results correctly, and 99% of our negative results correctly.  We'll talk about fine tuning these results later, but for now we have something that seems to be working.
 
 
-Now lets create a function that will allow us to classify all our numbers.
+Now lets create a quick function that will allow us to classify all our numbers, not just one at a time.
 
 ```python
 def all_numbers(data,labels):
