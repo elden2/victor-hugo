@@ -73,7 +73,7 @@ For a feed-forward binary perceptron, for any example, we take each of our dimen
 ![MNIST Dataset](/img/per.png)
 
 
-Lets start by creating a matrix of random weights.  Since the images as 28x28 pixels, each has 784 dimensions, and we are going to therefore need 784 weights.
+Lets start by creating a matrix of random weights.  Since the images are 28x28 pixels, each has 784 dimensions, and we are going to therefore need 784 weights.
 
 
 ```python
