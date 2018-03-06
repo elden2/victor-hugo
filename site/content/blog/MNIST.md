@@ -14,7 +14,7 @@ keywords:
 
 ![MNIST Dataset - From Quora](/img/mnist.png)
 
-The MNIST dataset is great little dataset to start exploring image recognition.  It's a series of 60,000 28 x 28 pixel images, each representing one of the digits between 0 and 9.
+The MNIST digits are a great little dataset to start exploring image recognition.  It's a series of 60,000 28 x 28 pixel images, each representing one of the digits between 0 and 9.
 
 We're going to try to classify handwritten digits using a single layer perceptron classifier.  This is by no means the most accurate way of doing this, but it gives us a very nice jumping off point to explore more complex methods (most notably, deeper neural networks), which I'll explore later.
 
