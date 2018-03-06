@@ -193,7 +193,7 @@ def test_all(data, labels, weights):
 	return accuracy
 ```
 
-## Choosing Learnign Rate
+## Choosing Learning Rate
 
 Lets graph the percentage of true positives we get on one number (in this case 3) for 20 iterations and see what different learning rates look like.
 
@@ -217,7 +217,7 @@ It doesn't look like 200 iterations is helping us all that much.  It's a bit sca
 Lets use .000007 learning rate and 200 iterations (it runs pretty fast as it is, so time isn't an issue) on test set and see our final accuracy.
 
 
-#85.05% Accurate.  Not half bad.
+# 85.05% Accurate.  Not half bad.
 
 
 
