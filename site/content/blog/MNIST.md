@@ -9,7 +9,7 @@ keywords:
   - ML
 ---
 
-*Learning how to create a simple perceptron classifier is python to recognize handwritten digits in the MNIST dataset.*
+*Creating a simple perceptron classifier in python to recognize handwritten digits from the MNIST dataset*
 
 
 ![MNIST Dataset - From Quora](/img/mnist.png)
@@ -127,14 +127,14 @@ def update(weights, data_point, labels, alpha=.1):
 ```
 
 ```python
-def train_perceptron(data, labels, weights, alpha = .1, iterations = 100):
+def train_perceptron(data, labels, weights, alpha = .001, iterations = 10):
 	for j in range(0, iterations):
 		for i in range(0, len(data)):
 			weights = update(weights, data[i], labels[i], alpha)
 	return weights
 ```
 
-I've written a few functions  to test how well this program works before we move on.
+I've written a few functions to test how well this program works before we move on.
 
 ```python
 def test_perceptron_f(data, labels, weights):
@@ -166,7 +166,7 @@ def all_numbers(data,labels):
 	weights = []
 	for i in range(0, 10):
 		z = one_number(labels, i)
-		a = train_perceptron(data, z, w, .1, 4)
+		a = train_perceptron(data, z, w, .001, 4)
 		weights.append(a[:,0])
 	return np.asarray(weights)
 ```
@@ -199,7 +199,7 @@ Lets graph the percentage of true positives we get on one number (in this case 3
 
 ![Alhpha = 1](/img/alpha10.png)
 
-Above is using Alpha = 1.  We can see that were all over the place.  Doesn't look like were getting better with each iteration.  I kept decreased by powers of 10 till I got somethign that worked:
+Above is using Alpha = 1.  We can see that were all over the place.  Doesn't look like were getting better with each iteration.  I kept decreased by powers of 10 till I got something that worked:
 
 
 ![Alhpha = .00001](/img/alphap00001_bumpy.png)
@@ -208,11 +208,11 @@ Alpha = .00001 looks like something we can use, if a little bumpy.
 
 Too much smaller, and this might take too long to converge.
 
-It looks like we're still gaining accuracy with more iteratins though, so lets up the number of iterations up to 200, and see what we get.
+It looks like we're still gaining accuracy with more iterations though, so lets up the number of iterations up to 200, and see what we get.
 
 ![200 Iterations](/img/alpha_200iter.png)
 
-It doesn't look like 200 iterations is helping us all that much.  It's a bit scattered still, so a slightly smaller learning rate probobably wouldn't hurt.
+It doesn't look like 200 iterations is helping us all that much.  It's a bit scattered still, so a slightly smaller learning rate probably wouldn't hurt.
 
 Lets use .000007 learning rate and 200 iterations (it runs pretty fast as it is, so time isn't an issue) on test set and see our final accuracy.
 
