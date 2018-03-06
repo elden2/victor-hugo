@@ -199,12 +199,8 @@ Lets graph the percentage of true positives we get on one number (in this case 3
 
 ![Alhpha = 1](/img/alpha10.png)
 
-Above is using Alpha = 1.  We can see that were all over the place.  Doesn't look like were getting better with each iteration.  Lets try something smaller
+Above is using Alpha = 1.  We can see that were all over the place.  Doesn't look like were getting better with each iteration.  I kept decreased by powers of 10 till I got somethign that worked:
 
-
-![Alhpha = .001](/img/alpha_0p001.png)
-
-Alpha = .001 looks a little bit better.
 
 ![Alhpha = .00001](/img/alphap00001_bumpy.png)
 
