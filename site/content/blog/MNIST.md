@@ -140,7 +140,7 @@ I've written a few functions to test how well this program works before we move 
 def test_perceptron_f(data, labels, weights):
     a,b = np.shape(data)
     predicted = predict(data, weights)
-    correct = (predicted==labels)*1==1
+    correct = (predicted==labels)*1
     true_pos = np.sum((labels==1)*(correct))
     true_neg = np.sum((labels==0)*(correct))
     tp_p = true_pos/float(np.sum(labels))
