@@ -11,15 +11,15 @@ keywords:
 
 *Creating a very simple neural network for binary classification*
 
-Every time I try to build an ML algorithm from scratch, it gives me a far greater understanding of what is actually going on.  This is a pretty straightforward  neural network with one hidden layer trained with backpropagation.  Although before I tried to build this, I generally understood how backpropagation worked in theory, fumbling through all the trouble aligning matrices  correctly, adding bias units, and implementing the idea really solidified that understanding.
+Every time I try to build an ML algorithm from scratch, it gives me a far greater understanding of what is actually going on.  This is a pretty straightforward  neural network with one hidden layer trained with backpropagation.  Although before I tried to build this, I generally understood the theory of how backpropagation worked, fumbling through all the trouble aligning matrices  correctly, adding bias units, and implementing the idea really solidified that understanding.
 
-The attached code, which you can find at [github](MNIST-Classification/MultiLayerFinal.py)will allow you to train a neural network with 1 hidden layer with a self selecting number of neurons on a binary labeled data set.  [Jupyter Script](MNIST-Classification/Playing_with_Hidden_Layers.ipynb) may also be useful.
+The attached code, which you can find at [github](MNIST-Classification/MultiLayerFinal.py) will allow you to train a neural network with 1 hidden layer with a self selecting number of neurons on a binary labeled data set.  This [Jupyter Script](MNIST-Classification/Playing_with_Hidden_Layers.ipynb) may also be useful.
 
 There is a lot more that can be done with this little example code, which will be the basis for my next project.  That includes implementing batch gradient decent, making an arbitrary number of hidden layers, trying different activation functions, and allowing for multi-class classification.
 
 
 
-I created a simple dataset to play with.
+First I created a simple dataset to play with.
 
 ![sin data](/img/sin.png)
 
@@ -61,14 +61,14 @@ plt.show()
 
 I won't go as far as to say this is useless, but it certainly isn't great.
 
-Lets tryt o fit a quadratic curve through the data.  Do to this, I created new data with the following dimensions: x, y, x^2, y^2, and xy
+We can alsp tryt o fit a quadratic curve through the data.  To do this, I created new data with the following dimensions: x, y, x^2, y^2, and xy
 
 ```python
 def quadratic(data):
     return np.transpose(np.vstack((data[:,0], data[:, 1], data[:,0]*data[:,1], data[:,0]**2, data[:,1]**2)))
 ```
 
-And lets see what happens:
+What happens:
 
 ```python
 new_data = quadratic(data[:, 0:2])
@@ -105,7 +105,7 @@ plt.show()
 Certainly not great, but a lot better.  If I spent some time playing with the parameters, I could spruce this up a bit, but it'll never be perfect.
 
 
-So it's time to create my neural network to see if it does better.
+It's time to create my neural network to see if it does better.
 
 
 
@@ -150,7 +150,7 @@ I need to research the specifics of how to chose an activation function.  I'm us
 		return wh, wo, bh, bo
 ```
 
-I'll come back to the weights also in a bit.  Right now, you can adjust the number of hidden layers, but I want to change this to add an arbitrary number.
+I'll come back to the weights also in a bit.  Right now, you can't adjust the number of hidden layers, just the size of the hidden layer.  But I want to change this to add any arbitrary number of layers.
 
 
 
@@ -192,7 +192,7 @@ I'll come back to the weights also in a bit.  Right now, you can adjust the numb
  		return wh, wo, bh, bo, total_error
  ```
 
-```pytbon
+```python
  	def test(self, data, labels, wh, wo, bh, bo):
  		out1, out2 = self.feed_foward(data,wh, wo, bh, bo)
  		def pr(x):
@@ -209,6 +209,7 @@ I'll come back to the weights also in a bit.  Right now, you can adjust the numb
 
 
 And lets see what happens:
+
 ```python
 
 a = NN(x, y, hidden_layer_size = 2)
@@ -235,7 +236,7 @@ for i in range(0,20):
         else: plt.scatter(it, jt, color = 'red')
 plt.show()
 ```
-![2 Layers](/img/l2.png)
+![2 Layers](/img/2l.png)
 
 Two neurons just isn't enough to make this work well.
 
