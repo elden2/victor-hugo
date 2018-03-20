@@ -61,7 +61,7 @@ plt.show()
 
 I won't go as far as to say this is useless, but it certainly isn't great.
 
-We can alsp tryt o fit a quadratic curve through the data.  To do this, I created new data with the following dimensions: x, y, x^2, y^2, and xy
+We can also try to fit a quadratic curve through the data.  To do this, I created new data with the following dimensions: x, y, x^2, y^2, and xy
 
 ```python
 def quadratic(data):
