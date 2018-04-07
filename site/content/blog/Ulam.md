@@ -168,3 +168,5 @@ a.show()
 Doesn't look half bad.  And runs pretty fast as well.
 
 A second fun step would now be to alter the code to either start from different numbers (instead of starting from 1 in the center), or change the shape to see what happens.
+
+You can find the full code at https://github.com/zswarth/SmallProjects/blob/master/Ulam.py

@@ -5,17 +5,17 @@ title: Reducing Number of Colors in Photo using K-Means
 keywords:
   - K-Means
   - Coloring Photo
-  - Sckit learn
+  - Scikit learn
 ---
 
-*There are quite a few million color possiblities in a normal RGB PNG file.  Use K-Mears to pear it down to as many as you'd like for some intersting results.*
+*There are quite a few million color possibilities in a normal RGB PNG file.  Use K-Mears to pear it down to as many as you'd like for some interesting results.*
 
 
 This was just a test to see what would come out; my attempt was to make something that looked like the [Obama Hope](https://en.wikipedia.org/wiki/Barack_Obama_%22Hope%22_poster) poster by Shepard Fairey.
 
-The K-Means algorithm is a fun little tool which seperates data into a number of piles based on the Euclidean distance of the data to a point.
+The K-Means algorithm is a fun little tool which separates data into a number of piles based on the Euclidean distance of the data to a point.
 
-See [post](/blog/writing-the-k-means-algorithm-from-scratch/) for more detail on how it works.
+See [post](/blog/writing-the-k-means-algorithm-from-scratch/) for more detail on how k-means works.
 
 
 ```python

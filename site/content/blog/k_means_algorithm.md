@@ -11,6 +11,8 @@ keywords:
 
 *How to write a k-means clustering algorithm in python*
 
+The full code can be found at [github](https://github.com/zswarth/SmallProjects/blob/master/new_k-means.py)
+
 
 ![Iris Data](/img/4_plot.png)
 
@@ -125,10 +127,7 @@ def final_algorithm(data, n_clusters = 2, iter = 3):
 		centroids = update_centroids(data, labels, centroids)
 		labels = label(data, centroids)
 	return centroids, labels
-```
-
-
-```		
+```	
 
 
 Our centroids have moved closer to the centers of our data.

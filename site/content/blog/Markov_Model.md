@@ -139,7 +139,7 @@ Grabbing all our keys:
 
  
 
-The above functions takes our text and chops it up into appropriate length keys.  If a key is not in the dictionary, it adds a new entry with  the word that follows as a single element list as the value.  If the key already exits, the next word is added in the value's list.
+The above functions take our text and chops it up into appropriate length keys.  If a key is not in the dictionary, it adds a new entry with the word that follows as a single element list as the value.  If the key already exits, the next word is added in the value's list.
 
  
 

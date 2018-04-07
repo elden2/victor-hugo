@@ -11,12 +11,11 @@ keywords:
 
 *Creating a very simple neural network for binary classification*
 
-Every time I try to build an ML algorithm from scratch, it gives me a far greater understanding of what is actually going on.  This is a pretty straightforward  neural network with one hidden layer trained with backpropagation.  Although before I tried to build this, I generally understood the theory of how backpropagation worked, fumbling through all the trouble aligning matrices  correctly, adding bias units, and implementing the idea really solidified that understanding.
+Every time I try to build an ML algorithm from scratch, it gives me a far greater understanding of what is actually going on.  This is a pretty straightforward neural network with one hidden layer trained with backpropagation.  Although before I tried to build this, I generally understood the theory of how backpropagation worked, fumbling through all the trouble aligning matrices correctly, adding bias units, and implementing the idea really solidified that understanding.
 
-The attached code, which you can find at [github](MNIST-Classification/MultiLayerFinal.py) will allow you to train a neural network with 1 hidden layer with a self selecting number of neurons on a binary labeled data set.  This [Jupyter Script](MNIST-Classification/Playing_with_Hidden_Layers.ipynb) may also be useful.
+The attached code, which you can find at [github](https://github.com/zswarth/MNIST-Classification/blob/master/MultiLayerFinal.py) will allow you to train a neural network with 1 hidden layer (you can choose the number of neurons in this layer).  This [Jupyter Script](https://github.com/zswarth/MNIST-Classification/blob/master/Playing_with_Hidden_Layers.ipynb) may also be useful.
 
-There is a lot more that can be done with this little example code, which will be the basis for my next project.  That includes implementing batch gradient decent, making an arbitrary number of hidden layers, trying different activation functions, and allowing for multi-class classification.
-
+There is a lot more that I want to eventually do with this little example code - that will be the basis for my next project.  This includes implementing batch gradient decent, allowing this to automatically work with an arbitrary number of hidden layers, trying different activation functions, and, most importantly, allowing for multi-class classification.
 
 
 First I created a simple dataset to play with.
@@ -26,22 +25,13 @@ First I created a simple dataset to play with.
 This is clearly a non linear boundary, so my last project, a single perceptron, won't do much good.
 
 
+Lets just see what it would do anyway:
 
 ```python
-from MultiLayerFinal import NN
-import numpy as np
-import random
-from scipy.special import expit
 from perceptron_object import Perceptron
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-
-data = np.loadtxt('sin.csv', delimiter = ',')
 
 Per = Perceptron(data[:,0:2], data[:,2:3], alpha = .001, iteration = 200, test_percentage = .1, binary = True)
 ```
-
-Lets just see what it would do anyway:
 
 ```python
 def plot_weights(w):
@@ -102,12 +92,10 @@ plt.show()
 
 ![Quadratic](/img/quad.png)
 
-Certainly not great, but a lot better.  If I spent some time playing with the parameters, I could spruce this up a bit, but it'll never be perfect.
+Certainly not great, but a lot better.  If I spent some time playing with the parameters, I could spruce this up a bit, but it'll never be perfect (as the boundary isn't quadratic)
 
 
-It's time to create my neural network to see if it does better.
-
-
+A neural network should do better.
 
 ```python
 import numpy as np
@@ -176,7 +164,7 @@ I'll come back to the weights also in a bit.  Right now, you can't adjust the nu
  		total_error = np.sum(abs(error))
  		return wo, wh, total_error
  ```
- A full training cycle involves  one feed foward step, followed by propagating the errors created in this feed forward prediction backwards though the network.
+ A full training cycle involves  one feed forward step, followed by propagating the errors created in this feed forward prediction backwards though the network.
 
 
 ```python
@@ -216,14 +204,7 @@ a = NN(x, y, hidden_layer_size = 2)
 c,d = a.feed_foward(x, a.wh, a.wo, a.bh, a.bo)
 
 
-# In[40]:
-
-
 w1,w2, bh, bo, errors = a.train(x, y,a.wh, a.wo, a.bh, a.bo, alpha = .06, iter = 30000)
-
-
-# In[41]:
-
 
 for i in range(0,20):
     it = i/2.0
@@ -238,7 +219,7 @@ plt.show()
 ```
 ![2 Layers](/img/2l.png)
 
-Two neurons just isn't enough to make this work well.
+Two neurons just aren't enough to make this work well.
 
 ![Layers](/img/l1l2.png)
 
@@ -248,20 +229,11 @@ We can see above the output of each of the two neurons and how they are contribu
 6 Neurons:
 
 
-
 ```python
 new = NN(x, y, hidden_layer_size = 6)
 c,d = new.feed_foward(x, new.wh, new.wo, new.bh, new.bo)
 
-
-# In[77]:
-
-
 w1,w2, bh, bo, errors = new.train(x, y,new.wh, new.wo, new.bh, new.bo, alpha = .0001, iter = 30000)
-
-
-# In[78]:
-
 
 for i in range(0,20):
     it = i/2.0
@@ -296,10 +268,10 @@ plt.show()
 
 ![Each Neuron](/img/6ns.png).  We can see what each neuron is doing.
 
-If I divide up my data into half training and half testing, 6 neurons is enough to pretty close to perfectly classify my data.  With 10 neurons, it doesn't take too much work to get a prefect accuracy with this data.
+If I divide up my data into half training and half testing, 6 neurons is enough to pretty close to perfectly classify my data.  With 10 neurons, it doesn't take too much work to get a prefect accuracy with this data (granted, this data has no noise - so overfitting is not going to be a problem).
 
 
-This is a fun little toy to play with, and a great exercise  to help me understand how neural networks work.  Next I need to add the ability to work with multi-class classification, multiple  hidden layers, and batch gradient decent, and then try and run it on the MNIST data set.  Of course using a library like tensorflow would be far more efficient for any actual project, but where's the fun in that?
+This is a fun little toy to play with, and a great exercise  to help me understand how neural networks work.  Next I need to add the ability to work with multi-class classification, multiple hidden layers, and batch gradient decent, and then try and run it on the MNIST data set.  Of course using a library like tensorflow would be far more efficient for any actual project, but where's the fun in that?
 
 
 
