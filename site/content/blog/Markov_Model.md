@@ -180,25 +180,30 @@ Yielding the start of a paragraph 'the Sperm Whale is...."
 			return max(groupby(sorted(L)), key=lambda(x, v):(len(list(v)),-L.index(x)))[0]
 
 
+
 	def predict_word(self, key = 'three word form', noise = False):
 		a = key.split()
-		temp= a[1]+ ' ' + a[2]
-		temp2 = a[2]
-		if temp in self.dictionary_doubles.keys():
+		temp3 = a[0]+ ' ' + a[1] + ' ' + a[2] 
+		temp2 = a[1]+ ' ' + a[2]
+		temp1 = a[2]
+		if temp3 in self.dictionary_tripple.keys():
+			self.error_count[0] += 1
+			return self.common_word(self.dictionary_tripple[temp3], noise = noise)
+		if temp2 in self.dictionary_doubles.keys():
 			self.error_count[1] += 1
-			return self.common_word(self.dictionary_doubles[temp], noise = noise)
-		if a[2] in self.dictionary_single.keys():
+			return self.common_word(self.dictionary_doubles[temp2], noise = noise)
+		if temp1 in self.dictionary_single.keys():
 			self.error_count[2] += 1
 			return self.common_word(self.dictionary_single[a[2]], noise = noise)
 		self.error_count[3] += 1
 		return self.dictionary_tripple[random.choice(self.dictionary_tripple.keys())][0]
+		
 			
 ```
 
  
 
-The noise = False section will be used at the end.  It allows us to bypass the most common word, and instead throw in a less common word that exists in the list.
-
+The noise = False section will be used at the end.  It allows us to bypass the most common word, and instead throw in a less common word that exists in the list.  With out a bit of noise thrown in, the program can get caught in infinite loops.
  
 
 Putting it all together:
