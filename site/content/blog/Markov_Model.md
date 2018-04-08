@@ -9,7 +9,7 @@ title: Marking A Markov Chain Speech Predictor
 
  
 
-The idea of a Markov Chain is pretty simple.  Imagine you were to hear the beginning of the sentence "The United States of....." and you needed to fill in the rest.  Chances are, at least if you are from San Francisco in 2018, you would assume "America" is the next word (as opposed to "The United States of Brazil," (which was Brazil's official name half a century ago).  You guessed "America" simply because statistically, this is by far the most common next word spoken after "Unite States of".
+The idea of a Markov Chain is pretty simple.  Imagine you were to hear the beginning of the sentence "The United States of....." and you needed to fill in the rest.  Chances are, at least if you are from San Francisco in 2018, you would assume "America" is the next word (as opposed to "The United States of Brazil," (which was Brazil's official name half a century ago).  You guessed "America" simply because statistically, this is by far the most common next word spoken after "United States of".
 
  
 
@@ -34,7 +34,6 @@ import random
 import sys
 import os
 from itertools import groupby
-import pickle
 
 ```
 
@@ -203,7 +202,7 @@ Yielding the start of a paragraph 'the Sperm Whale is...."
 
  
 
-The noise = False section will be used at the end.  It allows us to bypass the most common word, and instead throw in a less common word that exists in the list.  With out a bit of noise thrown in, the program can get caught in infinite loops.
+The noise = False section will be used at the end.  It allows us to bypass the most common word, and instead throw in a less common word that exists in the list.  Without a bit of noise thrown in, the program can get caught in infinite loops.
  
 
 Putting it all together:
@@ -256,11 +255,10 @@ Lets see if it works:
 
  
 
-"a Sperm Whale is not a little behind the whale, the body of a whale in the sea, and they are so shut up, belted about, every way defaced, that in the sea, poor Pip came all foaming up to the deck, and pretty soon, going to the deck, and in the sea, even as the great Sperm Whale is not a little plan that had been a great fish to swallow up Jonah." --JONAH. "There go flukes!" was now all alive. He seemed to be the first place, you will be all this as it were, to the deck, and in the
-[Finished in 2.5s]:
+"a Sperm Whale is not a little behind the whale, the body of a whale in the sea, and they are so shut up, belted about, every way defaced, that in the sea, poor Pip came all foaming up to the deck, and pretty soon, going to the deck, and in the sea, even as the great Sperm Whale is not a little plan that had been a great fish to swallow up Jonah." --JONAH. "There go flukes!" was now all alive. He seemed to be the first place, you will be all this as it were, to the deck, and in the"
+Finished in 2.5s:
  
 
- 
 
 Pretty close to gibberish, but still fun.  You can find a lot of books online in txt formats for free to play around with.
 
