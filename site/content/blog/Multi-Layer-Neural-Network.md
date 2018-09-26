@@ -11,12 +11,11 @@ keywords:
 
 *Creating a very simple neural network for binary classification*
 
-Every time I try to build an ML algorithm from scratch, it gives me a far greater understanding of what is actually going on.  This is a pretty straightforward  neural network with one hidden layer trained with backpropagation.  Although before I tried to build this, I generally understood the theory of how backpropagation worked, fumbling through all the trouble aligning matrices  correctly, adding bias units, and implementing the idea really solidified that understanding.
+Every time I try to build an ML algorithm from scratch, it gives me a far greater understanding of what is actually going on.  This is a pretty straightforward neural network with one hidden layer trained with backpropagation.  Although before I tried to build this, I generally understood the theory of how backpropagation worked, fumbling through all the trouble aligning matrices correctly, adding bias units, and implementing the idea really solidified that understanding.
 
-The attached code, which you can find at [github](MNIST-Classification/MultiLayerFinal.py) will allow you to train a neural network with 1 hidden layer with a self selecting number of neurons on a binary labeled data set.  This [Jupyter Script](MNIST-Classification/Playing_with_Hidden_Layers.ipynb) may also be useful.
+The attached code, which you can find at [github](https://github.com/zswarth/MNIST-Classification/blob/master/MultiLayerFinal.py) will allow you to train a neural network with 1 hidden layer (you can choose the number of neurons in this layer).  This [Jupyter Script](https://github.com/zswarth/MNIST-Classification/blob/master/Playing_with_Hidden_Layers.ipynb) may also be useful.
 
-There is a lot more that can be done with this little example code, which will be the basis for my next project.  That includes implementing batch gradient decent, making an arbitrary number of hidden layers, trying different activation functions, and allowing for multi-class classification.
-
+There is a lot more that I want to eventually do with this little example code - that will be the basis for my next project.  This includes implementing batch gradient decent, allowing this to automatically work with an arbitrary number of hidden layers, trying different activation functions, and, most importantly, allowing for multi-class classification.
 
 
 First I created a simple dataset to play with.
@@ -26,22 +25,13 @@ First I created a simple dataset to play with.
 This is clearly a non linear boundary, so my last project, a single perceptron, won't do much good.
 
 
+Lets just see what it would do anyway:
 
 ```python
-from MultiLayerFinal import NN
-import numpy as np
-import random
-from scipy.special import expit
 from perceptron_object import Perceptron
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-
-data = np.loadtxt('sin.csv', delimiter = ',')
 
 Per = Perceptron(data[:,0:2], data[:,2:3], alpha = .001, iteration = 200, test_percentage = .1, binary = True)
 ```
-
-Lets just see what it would do anyway:
 
 ```python
 def plot_weights(w):
@@ -102,12 +92,10 @@ plt.show()
 
 ![Quadratic](/img/quad.png)
 
-Certainly not great, but a lot better.  If I spent some time playing with the parameters, I could spruce this up a bit, but it'll never be perfect.
+Certainly not great, but a lot better.  If I spent some time playing with the parameters, I could spruce this up a bit, but it'll never be perfect (as the boundary isn't quadratic)
 
 
-It's time to create my neural network to see if it does better.
-
-
+A neural network should do better.
 
 ```python
 import numpy as np
@@ -119,13 +107,12 @@ These are the only libraries I'm going to use.
 ```python
 class NN(object):
 
-	def __init__ (self, data, labels, hidden_layer_size = 3, alpha = .1, batch = 20):
-		self.data = data
-		self.alpha = alpha
-		#self.batch = batch
-		#I'm going to keep this in here to implement batch gradient decent later
-		self.size = hidden_layer_size
-		self.wh, self.wo, self.bh, self.bo = self.create_weights()
+    def __init__ (self, data, labels, hidden_layer_size = 3):
+            self.data = data
+            self.labels = labels
+            self.size = hidden_layer_size
+            self.wh, self.wo, self.bh, self.bo = self.create_weights()
+
 ```
 I need to research the specifics of how to chose an activation function.  I'm using a sigmoid one here for no other reason than it is what I learned in Andrew Ng's Coursera course.  I'm going to come back and play with this later. 
 
@@ -155,56 +142,57 @@ I'll come back to the weights also in a bit.  Right now, you can't adjust the nu
 
 
 ```python
- 	def feed_foward(self, data, wh, wo, bh, bo):
+    def feed_foward(self, data):
+        output1 = self.sigmoid(np.dot(data, self.wh)+self.bh)
+        output2 = self.sigmoid(np.dot(output1, self.wo)+self.bo)
 
- 		output1 = self.sigmoid(np.dot(data, wh)+bh)
- 		output2 = self.sigmoid(np.dot(output1, wo)+bo)
-
- 		return output1, output2
-
+        return output1, output2
 
 
- 	def back_prop(self, data, labels, output1, output2, wh, wo, bh, bo, alpha = 1):
- 		error = labels - output2
- 		delta_output = error*self.sig_prime(output2)
- 		error_hidden = delta_output.dot(wo.T)
- 		delta_hidden = error_hidden*self.sig_prime(output1)
- 		wo +=  alpha*output1.T.dot(delta_output)
- 		wh += alpha*data.T.dot(delta_hidden)
- 		bo += alpha*np.sum(delta_output, axis = 0)
- 		bh += alpha*np.sum(delta_hidden, axis = 0)
- 		total_error = np.sum(abs(error))
- 		return wo, wh, total_error
+    def back_prop(self, output1, output2, alpha):
+        error = self.labels - output2
+        delta_output = error*self.sig_prime(output2)
+        error_hidden = delta_output.dot(self.wo.T)
+        delta_hidden = error_hidden*self.sig_prime(output1)
+        self.wo +=  alpha*output1.T.dot(delta_output)
+        self.wh += alpha*self.data.T.dot(delta_hidden)
+        self.bo += alpha*np.sum(delta_output, axis = 0)
+        self.bh += alpha*np.sum(delta_hidden, axis = 0)
+        total_error = np.sum(abs(error))
+        return total_error
  ```
- A full training cycle involves  one feed foward step, followed by propagating the errors created in this feed forward prediction backwards though the network.
+ A full training cycle involves  one feed forward step, followed by propagating the errors created in this feed forward prediction backwards though the network.
 
 
 ```python
- 	def train(self, data, labels, wh, wo, bh, bo, alpha = 100, iter = 120000):
- 		error = []
- 		for i in range(0, iter):
- 			output1, output2 = self.feed_foward(data,wh, wo, bh, bo)
- 			wo, wh, total_error = self.back_prop(data, labels, output1, output2, wh, wo, bh, bo, alpha = alpha)
- 			if i%1000 == 0:
- 				if i%10000:
- 					print total_error, i//1000, 'Thousand Iterations'
- 				error.append(total_error)
- 		return wh, wo, bh, bo, total_error
+    def train(self, data = None, alpha = 100, iterations = 120000):
+        data = self.data
+        error = []
+        for i in range(0, iterations):
+            output1, output2 = self.feed_foward(data)
+            total_error = self.back_prop(output1, output2, alpha)
+            if i%1000 == 0:
+                if i%10000:
+                    print total_error, i//1000, 'Thousand Iterations'
+                error.append(total_error)
+        return total_error
  ```
 
 ```python
- 	def test(self, data, labels, wh, wo, bh, bo):
- 		out1, out2 = self.feed_foward(data,wh, wo, bh, bo)
- 		def pr(x):
- 			output = []
- 			for i in x:
- 				if i >=.5:
- 					output.append(1)
- 				else:
- 					output.append(0)
- 			return np.asarray([output]).T
- 		correct = pr(out2)==labels
-		return correct*1, pr(out2), out2
+    def predict(self, x):
+        out1, out2 = self.feed_foward(x)
+        results = []
+        for i in out2:
+            if i >=.5:
+                results.append(1)
+            else:
+                results.append(0)
+        return np.asarray([results]).T
+
+    def test(self, x, labels):
+        results =  self.predict(x)
+        correct = (results==self.labels)*1
+        return correct, results
 ```
 
 
@@ -213,32 +201,22 @@ And lets see what happens:
 ```python
 
 a = NN(x, y, hidden_layer_size = 2)
-c,d = a.feed_foward(x, a.wh, a.wo, a.bh, a.bo)
 
-
-# In[40]:
-
-
-w1,w2, bh, bo, errors = a.train(x, y,a.wh, a.wo, a.bh, a.bo, alpha = .06, iter = 30000)
-
-
-# In[41]:
-
+a.train(alpha = .06, iterations = 3000)
 
 for i in range(0,20):
     it = i/2.0
-    itr,b,c = a.test(x, y, a.wh, a.wo, a.bh, a.bo)
     for j in range(0,20):
         jt = j/2.0
-        b = a.feed_foward([it, jt], a.wh, a.wo, a.bh, a.bo)
-        if b[1]>=.5:
+        b = a.predict([it,jt])
+        if b[0]>=.5:
             plt.scatter(it, jt, color = 'blue')
         else: plt.scatter(it, jt, color = 'red')
 plt.show()
 ```
 ![2 Layers](/img/2l.png)
 
-Two neurons just isn't enough to make this work well.
+Two neurons just aren't enough to make this work well.
 
 ![Layers](/img/l1l2.png)
 
@@ -248,28 +226,16 @@ We can see above the output of each of the two neurons and how they are contribu
 6 Neurons:
 
 
-
 ```python
 new = NN(x, y, hidden_layer_size = 6)
-c,d = new.feed_foward(x, new.wh, new.wo, new.bh, new.bo)
-
-
-# In[77]:
-
-
-w1,w2, bh, bo, errors = new.train(x, y,new.wh, new.wo, new.bh, new.bo, alpha = .0001, iter = 30000)
-
-
-# In[78]:
-
+errors = new.train(x, alpha = .001, iterations = 30000)
 
 for i in range(0,20):
     it = i/2.0
-    itr,b,c = a.test(x, y, new.wh, new.wo, new.bh, new.bo)
     for j in range(0,20):
         jt = j/2.0
-        b = new.feed_foward([it, jt], new.wh, new.wo, new.bh, new.bo)
-        if b[1]>=.5:
+        b = new.predict([it,jt])
+        if b[0]>=.5:
             plt.scatter(it, jt, color = 'blue')
         else: plt.scatter(it, jt, color = 'red')
 plt.show()
@@ -284,10 +250,9 @@ for i in range(1,7):
     plt.subplot(2,3,i)
     for k in range(0,20):
         it = k/2.0
-        itr,q,c = new.test(x, y, new.wh, new.wo, new.bh, new.bo)
         for j in range(0,20):
             jt = j/2.0
-            r = new.feed_foward([it, jt], new.wh, new.wo, new.bh, new.bo)
+            r = new.feed_foward([it, jt])
             if r[0][0][i-1]>=.5:
                 plt.scatter(it, jt, color = 'blue')
             else: plt.scatter(it, jt, color = 'red')
@@ -296,10 +261,10 @@ plt.show()
 
 ![Each Neuron](/img/6ns.png).  We can see what each neuron is doing.
 
-If I divide up my data into half training and half testing, 6 neurons is enough to pretty close to perfectly classify my data.  With 10 neurons, it doesn't take too much work to get a prefect accuracy with this data.
+If I divide up my data into half training and half testing, 6 neurons is enough to pretty close to perfectly classify my data (granted, this data has no noise - so overfitting is not going to be a problem).
 
 
-This is a fun little toy to play with, and a great exercise  to help me understand how neural networks work.  Next I need to add the ability to work with multi-class classification, multiple  hidden layers, and batch gradient decent, and then try and run it on the MNIST data set.  Of course using a library like tensorflow would be far more efficient for any actual project, but where's the fun in that?
+This is a fun little toy to play with, and a great exercise  to help me understand how neural networks work.  Next I need to add the ability to work with multi-class classification, multiple hidden layers, and batch gradient decent, and then try and run it on the MNIST data set.  Of course using a library like tensorflow would be far more efficient for any actual project, but where's the fun in that?
 
 
 
