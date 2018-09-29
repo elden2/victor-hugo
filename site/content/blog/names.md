@@ -107,7 +107,7 @@ plt.scatter(a.Year, a.Number)
 
 
 
-![png](output_9_1.png)
+![png](/img/output_9_1.png)
 
 
 Lets make a list of male and female names which have ever been in the top x places.
@@ -226,7 +226,7 @@ plt.show()
 plt.scatter((years), total_score_w)
 ```
 
-![png](output_21_0.png)
+![png](/img/output_21_0.png)
 
 
 
@@ -237,7 +237,7 @@ plt.scatter((years), total_score_w)
 
 
 
-![png](output_21_2.png)
+![png](/img/output_21_2.png)
 
 
 
@@ -263,7 +263,7 @@ plt.scatter(range(1990,2018), total_score_m[-28:])
 
 
 
-![png](output_24_1.png)
+![png](/img/output_24_1.png)
 
 
 
@@ -323,7 +323,7 @@ plt.scatter((years), total_score_w)
 
 
 
-![png](output_28_1.png)
+![png](/img/output_28_1.png)
 
 
 
@@ -417,7 +417,7 @@ plt.scatter((years), total_score_m_100, color= 'c')
 
 
 
-![png](output_34_1.png)
+![png](/img/output_34_1.png)
 
 
 A bit of a different story when we look at the top 100 names.  With men, still a big increase starting in the 1980s, but there was also a peak in the early part of the century.  With women, the encrease really started in the 1950s.
@@ -467,7 +467,7 @@ plt.scatter(years, total_score_w_500, color = 'c')
 
 
 
-![png](output_38_1.png)
+![png](/img/output_38_1.png)
 
 
 Trend seems pretty clear (although I'm not really quantifying how clear statistically).
@@ -546,7 +546,7 @@ plt.scatter(years, score_men_year, color = 'b')
 
 
 
-![png](output_44_1.png)
+![png](/img/output_44_1.png)
 
 
 
@@ -560,7 +560,7 @@ plt.scatter(years, total_score_w_500, color = 'g')
 
 
 
-![png](output_45_1.png)
+![png](/img/output_45_1.png)
 
 
 Either way, there doesnt seem to be a big change in the overall shape of the charts.  But what's intersting, is specific names often have a large change over time.
@@ -576,7 +576,7 @@ plt.scatter(list(a.keys()), list(a.values()))
 
 
 
-![png](output_47_1.png)
+![png](/img/output_47_1.png)
 
 
 
@@ -590,7 +590,7 @@ plt.scatter(list(a.keys()), list(a.values()))
 
 
 
-![png](output_48_1.png)
+![png](/img/output_48_1.png)
 
 
 
@@ -604,7 +604,7 @@ plt.scatter(list(a.keys()), list(a.values()))
 
 
 
-![png](output_49_1.png)
+![png](/img/output_49_1.png)
 
 
 I've got to be a little bit careful in interpreting these graphs for 2 reasons:
