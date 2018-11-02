@@ -417,7 +417,7 @@ plt.scatter((years), total_score_m_100, color= 'c')
 
 
 
-![png](/img/output_34_1.png)
+![png](/img/output_38_1.png)
 
 
 A bit of a different story when we look at the top 100 names.  With men, still a big increase starting in the 1980s, but there was also a peak in the early part of the century.  With women, the encrease really started in the 1950s.
